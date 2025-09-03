@@ -1,0 +1,6 @@
+packages:
+  golangcilint:
+    main: github.com/golangci/golangci-lint/v2/cmd/golangci-lint
+    distance-to-project-pkg: 2
+    do-not-rewrite-flag-import:
+      - "github.com/golangci/golangci-lint/v2/pkg/goanalysis/linter.go"

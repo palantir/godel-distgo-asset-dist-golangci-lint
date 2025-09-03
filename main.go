@@ -14,4 +14,22 @@
 
 package main
 
-func main() {}
+import (
+	"os"
+
+	"github.com/palantir/amalgomate/amalgomated"
+	"github.com/palantir/distgo/dister"
+	"github.com/palantir/godel-distgo-asset-dist-golangci-lint/generated_src/golangcilint"
+	"github.com/palantir/godel-distgo-asset-dist-golangci-lint/golangcilint/config"
+	"github.com/palantir/godel-distgo-asset-dist-golangci-lint/golangcilint/creator"
+	"github.com/palantir/pkg/cobracli"
+)
+
+func main() {
+	os.Exit(amalgomated.RunApp(os.Args, nil, amalgomated.NewCmdLibrary(golangcilint.Instance()), pluginMain))
+}
+
+func pluginMain(osArgs []string) int {
+	os.Args = osArgs
+	return cobracli.ExecuteWithDefaultParams(dister.AssetRootCmd(creator.GolangCILint(), config.UpgradeConfig, "golangci-lint dist"))
+}
