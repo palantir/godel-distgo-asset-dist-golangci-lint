@@ -30,4 +30,4 @@ products:
     publish: {}
 product-defaults:
   publish:
-    group-id: com.palantir.godel.distgo-asset-dist-golangci-lint
+    group-id: com.palantir.distgo-asset-dist-golangci-lint
