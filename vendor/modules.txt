@@ -1083,8 +1083,8 @@ go.uber.org/zap/internal/exit
 go.uber.org/zap/internal/pool
 go.uber.org/zap/internal/stacktrace
 go.uber.org/zap/zapcore
-# golang.org/x/exp/typeparams v0.0.0-20250620022241-b7579e27df2b
-## explicit; go 1.23.0
+# golang.org/x/exp/typeparams v0.0.0-20250819193227-8b4c13bb791b
+## explicit; go 1.24.0
 golang.org/x/exp/typeparams
 # golang.org/x/mod v0.27.0
 ## explicit; go 1.23.0
