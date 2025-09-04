@@ -47,7 +47,7 @@ require (
 	github.com/go-xmlfmt/xmlfmt v1.1.3
 	github.com/gofrs/flock v0.12.1
 	github.com/golangci/dupl v0.0.0-20250308024227-f665c8d69b32
-	github.com/golangci/go-printf-func-name v0.1.0
+	github.com/golangci/go-printf-func-name v0.1.1
 	github.com/golangci/gofmt v0.0.0-20250704145412-3e58ba0443c6
 	github.com/golangci/golines v0.0.0-20250217134842-442fd0091d95
 	github.com/golangci/misspell v0.7.0
