@@ -1,0 +1,182 @@
+// Copyright 2016 Palantir Technologies, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package osarchbin
+
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"os"
+	"path"
+	"path/filepath"
+	"sort"
+	"strings"
+
+	"github.com/mholt/archiver/v3"
+	"github.com/palantir/distgo/distgo"
+	"github.com/palantir/godel/v2/pkg/osarch"
+	"github.com/pkg/errors"
+	"github.com/termie/go-shutil"
+)
+
+const TypeName = "os-arch-bin" // distribution that consists of the binaries for a specific OS/Architecture
+
+type Dister struct {
+	OSArchs []osarch.OSArch
+}
+
+func New(osArchs ...osarch.OSArch) distgo.Dister {
+	return &Dister{
+		OSArchs: osArchs,
+	}
+}
+
+func (d *Dister) TypeName() (string, error) {
+	return TypeName, nil
+}
+
+func (d *Dister) Artifacts(renderedName string) ([]string, error) {
+	var outPaths []string
+	for _, osArch := range d.OSArchs {
+		outPaths = append(outPaths, fmt.Sprintf("%s-%s.tgz", renderedName, osArch.String()))
+	}
+	return outPaths, nil
+}
+
+func (d *Dister) PackagingExtension() (string, error) {
+	return "tgz", nil
+}
+
+func (d *Dister) osArchFromArtifactPath(distID distgo.DistID, artifactPath string, productTaskOutputInfo distgo.ProductTaskOutputInfo) (osarch.OSArch, error) {
+	for _, osArch := range d.OSArchs {
+		if strings.HasSuffix(artifactPath, fmt.Sprintf("%s-%s.tgz", productTaskOutputInfo.Product.DistOutputInfos.DistInfos[distID].DistNameTemplateRendered, osArch.String())) {
+			return osArch, nil
+		}
+	}
+	return osarch.OSArch{}, errors.Errorf("failed to determine OS/Arch for artifact with Path %s", artifactPath)
+}
+
+func (d *Dister) RunDist(distID distgo.DistID, productTaskOutputInfo distgo.ProductTaskOutputInfo) ([]byte, error) {
+	for _, osArch := range d.OSArchs {
+		if err := verifyDistTargetSupported(osArch, productTaskOutputInfo); err != nil {
+			return nil, err
+		}
+	}
+	distWorkDir := productTaskOutputInfo.ProductDistWorkDirs()[distID]
+	outputPathsForOSArchs := make(map[string][]string)
+	for _, osArch := range d.OSArchs {
+		for _, currProductOutputInfo := range productTaskOutputInfo.AllProductOutputInfos() {
+			// copy executable for current product
+			dst, err := copyArtifactForOSArch(distWorkDir, productTaskOutputInfo.Project, currProductOutputInfo, osArch)
+			if err != nil {
+				return nil, err
+			}
+			outputPathsForOSArchs[osArch.String()] = append(outputPathsForOSArchs[osArch.String()], dst)
+		}
+	}
+	jsonBytes, err := json.Marshal(outputPathsForOSArchs)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to marshal outputPathsForOSArchs as JSON")
+	}
+	return jsonBytes, nil
+}
+
+func (d *Dister) GenerateDistArtifacts(distID distgo.DistID, productTaskOutputInfo distgo.ProductTaskOutputInfo, runDistResult []byte) error {
+	distWorkDir := productTaskOutputInfo.ProductDistWorkDirs()[distID]
+	outputArtifactPaths := productTaskOutputInfo.ProductDistArtifactPaths()[distID]
+	for _, artifactPath := range outputArtifactPaths {
+		currOSArch, err := d.osArchFromArtifactPath(distID, artifactPath, productTaskOutputInfo)
+		if err != nil {
+			return err
+		}
+
+		workDir := filepath.Join(distWorkDir, currOSArch.String())
+		items, err := ioutil.ReadDir(workDir)
+		if err != nil {
+			return errors.Wrap(err, "failed to list distribution items")
+		}
+
+		itemPaths := make([]string, len(items))
+		for i, item := range items {
+			itemPaths[i] = filepath.Join(workDir, item.Name())
+		}
+		tarGZ := archiver.NewTarGz()
+		tarGZ.OverwriteExisting = true
+		if err := tarGZ.Archive(itemPaths, artifactPath); err != nil {
+			return errors.Wrapf(err, "failed to create TGZ archive")
+		}
+	}
+	return nil
+}
+
+func verifyDistTargetSupported(osArch osarch.OSArch, productTaskOutputInfo distgo.ProductTaskOutputInfo) error {
+	if err := verifySingleProduct(osArch, productTaskOutputInfo.Product); err != nil {
+		return err
+	}
+	var keys []distgo.ProductID
+	for k := range productTaskOutputInfo.Deps {
+		keys = append(keys, k)
+	}
+	sort.Sort(distgo.ByProductID(keys))
+	for _, currKey := range keys {
+		currSpec := productTaskOutputInfo.Deps[currKey]
+		if err := verifySingleProduct(osArch, currSpec); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func verifySingleProduct(osArch osarch.OSArch, productOutputInfo distgo.ProductOutputInfo) error {
+	if !osArchInBuildSpec(osArch, productOutputInfo) {
+		buildOSArchs := "[none]"
+		if productOutputInfo.BuildOutputInfo != nil {
+			buildOSArchs = fmt.Sprint(productOutputInfo.BuildOutputInfo.OSArchs)
+		}
+		return errors.Errorf("the OS/Arch specified for the distribution of a product must be specified as a build target for the product, "+
+			"but product %s does not specify %s as one of its build targets (current build targets: %s)", productOutputInfo.ID, osArch, buildOSArchs)
+	}
+	return nil
+}
+
+func osArchInBuildSpec(osArch osarch.OSArch, productOutputInfo distgo.ProductOutputInfo) bool {
+	if productOutputInfo.BuildOutputInfo == nil {
+		return false
+	}
+	found := false
+	for _, currBuildOSArch := range productOutputInfo.BuildOutputInfo.OSArchs {
+		if currBuildOSArch == osArch {
+			found = true
+			break
+		}
+	}
+	return found
+}
+
+func copyArtifactForOSArch(outputDir string, projectInfo distgo.ProjectInfo, productInfo distgo.ProductOutputInfo, osArch osarch.OSArch) (string, error) {
+	artifactPath, ok := distgo.ProductBuildArtifactPaths(projectInfo, productInfo)[osArch]
+	if !ok {
+		return "", errors.Errorf("no build artifacts exist for %s", osArch)
+	}
+
+	dst := path.Join(outputDir, osArch.String(), distgo.ExecutableName(productInfo.BuildOutputInfo.BuildNameTemplateRendered, osArch.OS))
+	if err := os.MkdirAll(path.Dir(dst), 0755); err != nil {
+		return "", errors.Wrapf(err, "failed to create output directory for artifact")
+	}
+	if _, err := shutil.Copy(artifactPath, dst, false); err != nil {
+		return "", errors.Wrapf(err, "failed to copy build artifact from %s to %s", artifactPath, dst)
+	}
+	return dst, nil
+}
