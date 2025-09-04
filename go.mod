@@ -232,7 +232,7 @@ require (
 	github.com/vbatts/tar-split v0.12.1 // indirect
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 // indirect
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
-	go.uber.org/multierr v1.10.0 // indirect
+	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20250819193227-8b4c13bb791b // indirect
 	golang.org/x/text v0.28.0 // indirect
