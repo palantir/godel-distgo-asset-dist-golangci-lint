@@ -528,9 +528,6 @@ github.com/gostaticanalysis/forcetypeassert
 # github.com/gostaticanalysis/nilerr v0.1.1
 ## explicit; go 1.15
 github.com/gostaticanalysis/nilerr
-# github.com/grafana/regexp v0.0.0-20250905093917-f7b3be9d1853
-## explicit; go 1.21
-github.com/grafana/regexp
 # github.com/hashicorp/go-immutable-radix/v2 v2.1.0
 ## explicit; go 1.18
 github.com/hashicorp/go-immutable-radix/v2
@@ -828,7 +825,7 @@ github.com/prometheus/client_golang/prometheus/testutil/promlint/validations
 # github.com/prometheus/client_model v0.6.2
 ## explicit; go 1.22.0
 github.com/prometheus/client_model/go
-# github.com/prometheus/common v0.66.0
+# github.com/prometheus/common v0.66.1
 ## explicit; go 1.23.0
 github.com/prometheus/common/expfmt
 github.com/prometheus/common/model
@@ -1078,6 +1075,9 @@ go.uber.org/zap/internal/exit
 go.uber.org/zap/internal/pool
 go.uber.org/zap/internal/stacktrace
 go.uber.org/zap/zapcore
+# go.yaml.in/yaml/v2 v2.4.2
+## explicit; go 1.15
+go.yaml.in/yaml/v2
 # golang.org/x/exp/typeparams v0.0.0-20250819193227-8b4c13bb791b
 ## explicit; go 1.24.0
 golang.org/x/exp/typeparams
