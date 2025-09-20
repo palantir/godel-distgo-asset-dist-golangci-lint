@@ -26,7 +26,7 @@ var (
 	}
 
 	// Special tags in comments like "//nolint:", or "//+k8s:".
-	tags = regexp.MustCompile(`^\+?[a-z0-9]+:`)
+	tags = regexp.MustCompile(`^\+?[a-z0-9-]+:`)
 
 	// Special hashtags in comments like "// #nosec".
 	hashtags = regexp.MustCompile(`^#[a-z]+($|\s)`)
@@ -34,12 +34,6 @@ var (
 	// URL at the end of the line.
 	endURL = regexp.MustCompile(`[a-z]+://[^\s]+$`)
 )
-
-// position is a position inside a comment (might be multiline comment).
-type position struct {
-	line   int // starts at 1
-	column int // starts at 1, byte count
-}
 
 // checkComments checks every comment accordings to the rules from
 // `settings` argument.
