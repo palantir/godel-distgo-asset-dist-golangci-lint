@@ -525,8 +525,8 @@ github.com/gostaticanalysis/comment/passes/commentmap
 # github.com/gostaticanalysis/forcetypeassert v0.2.0
 ## explicit; go 1.23.0
 github.com/gostaticanalysis/forcetypeassert
-# github.com/gostaticanalysis/nilerr v0.1.1
-## explicit; go 1.15
+# github.com/gostaticanalysis/nilerr v0.1.2
+## explicit; go 1.23.0
 github.com/gostaticanalysis/nilerr
 # github.com/hashicorp/go-immutable-radix/v2 v2.1.0
 ## explicit; go 1.18
