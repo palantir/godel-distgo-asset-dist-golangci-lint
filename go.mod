@@ -57,7 +57,7 @@ require (
 	github.com/golangci/unconvert v0.0.0-20250410112200-a129a6e6413e
 	github.com/gordonklaus/ineffassign v0.2.0
 	github.com/gostaticanalysis/forcetypeassert v0.2.0
-	github.com/gostaticanalysis/nilerr v0.1.1
+	github.com/gostaticanalysis/nilerr v0.1.2
 	github.com/hashicorp/go-version v1.7.0
 	github.com/jgautheron/goconst v1.8.2
 	github.com/jingyugao/rowserrcheck v1.1.1
