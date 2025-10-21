@@ -571,8 +571,8 @@ github.com/kisielk/errcheck/errcheck
 # github.com/kkHAIKE/contextcheck v1.1.6
 ## explicit; go 1.23.0
 github.com/kkHAIKE/contextcheck
-# github.com/klauspost/compress v1.18.0
-## explicit; go 1.22
+# github.com/klauspost/compress v1.18.1
+## explicit; go 1.23
 github.com/klauspost/compress
 github.com/klauspost/compress/flate
 github.com/klauspost/compress/fse
