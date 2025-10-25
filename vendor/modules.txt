@@ -92,8 +92,8 @@ github.com/andybalholm/brotli/matchfinder
 # github.com/ashanbrown/forbidigo/v2 v2.1.0
 ## explicit; go 1.18
 github.com/ashanbrown/forbidigo/v2/forbidigo
-# github.com/ashanbrown/makezero/v2 v2.0.1
-## explicit; go 1.18
+# github.com/ashanbrown/makezero/v2 v2.1.0
+## explicit; go 1.24.0
 github.com/ashanbrown/makezero/v2/makezero
 # github.com/aymanbagabas/go-osc52/v2 v2.0.1
 ## explicit; go 1.16
