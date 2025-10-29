@@ -116,7 +116,7 @@ require (
 	github.com/spf13/pflag v1.0.10
 	github.com/spf13/viper v1.21.0
 	github.com/ssgreg/nlreturn/v2 v2.2.1
-	github.com/stbenjam/no-sprintf-host-port v0.2.0
+	github.com/stbenjam/no-sprintf-host-port v0.3.1
 	github.com/stretchr/testify v1.11.1
 	github.com/tdakkota/asciicheck v0.4.1
 	github.com/tetafro/godot v1.5.4
