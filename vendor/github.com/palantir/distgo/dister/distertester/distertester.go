@@ -17,9 +17,7 @@ package distertester
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
 	"os"
-	"path"
 	"path/filepath"
 	"sort"
 	"testing"
@@ -38,12 +36,14 @@ import (
 )
 
 type TestCase struct {
-	Name        string
-	Specs       []gofiles.GoFileSpec
-	ConfigFiles map[string]string
-	WantError   bool
-	WantOutput  func(projectDir string) string
-	Validate    func(projectDir string)
+	Name           string
+	Specs          []gofiles.GoFileSpec
+	ConfigFiles    map[string]string
+	PostTagAction  func(projectDir string)
+	WantError      bool
+	WantOutput     func(projectDir string) string
+	ValidateOutput func(projectDir, output string)
+	Validate       func(projectDir string)
 }
 
 var builtinSpecs = []gofiles.GoFileSpec{
@@ -58,8 +58,21 @@ var builtinSpecs = []gofiles.GoFileSpec{
 	},
 }
 
-// RunAssetDistTest tests the "dist" operation using the provided asset. Uses the provided plugin provider and asset
-// provider to resolve the plugin and asset and invokes the "dist" command.
+// RunAssetDistTest tests the "dist" operation using the provided asset. Uses the provided plugin
+// provider and asset provider to resolve the plugin and asset and invokes the "dist" command.
+//
+// Does the following:
+//   - Creates a temporary directory in the current working directory
+//   - For each test case:
+//   - Creates a temporary directory within the parent temporary directory
+//   - Initializes the directory as a git repository
+//   - Writes all the Go and spec files provided by the test case
+//   - Commits all files
+//   - Tags the commit as v1.0.0
+//   - Runs the post-tag action if it is non-nil
+//   - Runs the "build" task
+//   - Runs the "dist" task with the provided asset
+//   - Performs validations/assertions
 func RunAssetDistTest(t *testing.T,
 	pluginProvider pluginapitester.PluginProvider,
 	assetProvider pluginapitester.AssetProvider,
@@ -71,7 +84,7 @@ func RunAssetDistTest(t *testing.T,
 	tmpDir, cleanup, err := dirs.TempDir("", "")
 	require.NoError(t, err)
 	if !filepath.IsAbs(tmpDir) {
-		tmpDir = path.Join(wd, tmpDir)
+		tmpDir = filepath.Join(wd, tmpDir)
 	}
 	defer cleanup()
 
@@ -79,7 +92,7 @@ func RunAssetDistTest(t *testing.T,
 	require.NoError(t, err)
 
 	for i, tc := range testCases {
-		projectDir, err := ioutil.TempDir(tmpDir, "")
+		projectDir, err := os.MkdirTemp(tmpDir, "")
 		require.NoError(t, err)
 
 		gittest.InitGitDir(t, projectDir)
@@ -92,9 +105,9 @@ func RunAssetDistTest(t *testing.T,
 		sort.Strings(sortedKeys)
 
 		for _, k := range sortedKeys {
-			err = os.MkdirAll(path.Dir(path.Join(projectDir, k)), 0755)
+			err = os.MkdirAll(filepath.Dir(filepath.Join(projectDir, k)), 0755)
 			require.NoError(t, err)
-			err = ioutil.WriteFile(path.Join(projectDir, k), []byte(tc.ConfigFiles[k]), 0644)
+			err = os.WriteFile(filepath.Join(projectDir, k), []byte(tc.ConfigFiles[k]), 0644)
 			require.NoError(t, err)
 		}
 
@@ -108,6 +121,11 @@ func RunAssetDistTest(t *testing.T,
 		// commit all files and tag project as v1.0.0
 		gittest.CommitAllFiles(t, projectDir, "Commit all files")
 		gittest.CreateGitTag(t, projectDir, "v1.0.0")
+
+		// if postTagAction is provided, run it
+		if tc.PostTagAction != nil {
+			tc.PostTagAction(projectDir)
+		}
 
 		outputBuf := &bytes.Buffer{}
 		func() {
@@ -149,6 +167,9 @@ func RunAssetDistTest(t *testing.T,
 			}
 			if tc.WantOutput != nil {
 				assert.Equal(t, tc.WantOutput(projectDir), outputBuf.String(), "Case %d: %s", i, tc.Name)
+			}
+			if tc.ValidateOutput != nil {
+				tc.ValidateOutput(projectDir, outputBuf.String())
 			}
 			if tc.Validate != nil {
 				tc.Validate(projectDir)
@@ -197,20 +218,20 @@ func RunRepeatedDistTest(t *testing.T,
 	tmpDir, cleanup, err := dirs.TempDir("", "")
 	require.NoError(t, err)
 	if !filepath.IsAbs(tmpDir) {
-		tmpDir = path.Join(wd, tmpDir)
+		tmpDir = filepath.Join(wd, tmpDir)
 	}
 	defer cleanup()
 
 	tmpDir, err = filepath.EvalSymlinks(tmpDir)
 	require.NoError(t, err)
 
-	projectDir, err := ioutil.TempDir(tmpDir, "")
+	projectDir, err := os.MkdirTemp(tmpDir, "")
 	require.NoError(t, err)
 
 	for filename, contents := range internalFiles {
-		err = os.MkdirAll(path.Dir(path.Join(projectDir, filename)), 0755)
+		err = os.MkdirAll(filepath.Dir(filepath.Join(projectDir, filename)), 0755)
 		require.NoError(t, err)
-		err = ioutil.WriteFile(path.Join(projectDir, filename), contents, 0644)
+		err = os.WriteFile(filepath.Join(projectDir, filename), contents, 0644)
 		require.NoError(t, err)
 	}
 	// write files required for test framework
