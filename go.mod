@@ -140,7 +140,7 @@ require (
 	go.uber.org/automaxprocs v1.6.0
 	golang.org/x/mod v0.31.0
 	golang.org/x/sync v0.19.0
-	golang.org/x/sys v0.39.0
+	golang.org/x/sys v0.40.0
 	golang.org/x/tools v0.40.0
 	gopkg.in/yaml.v2 v2.4.0
 	gopkg.in/yaml.v3 v3.0.1
