@@ -151,7 +151,7 @@ require (
 
 require (
 	codeberg.org/chavacava/garif v0.2.0 // indirect
-	dev.gaijin.team/go/golib v0.8.0 // indirect
+	dev.gaijin.team/go/golib v0.8.1 // indirect
 	github.com/Masterminds/semver/v3 v3.4.0 // indirect
 	github.com/VividCortex/ewma v1.2.0 // indirect
 	github.com/alfatraining/structtag v1.0.0 // indirect
