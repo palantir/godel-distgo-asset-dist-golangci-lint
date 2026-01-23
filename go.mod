@@ -15,7 +15,7 @@ require (
 	github.com/BurntSushi/toml v1.6.0
 	github.com/Djarvur/go-err113 v0.1.1
 	github.com/OpenPeeDeeP/depguard/v2 v2.2.1
-	github.com/alecthomas/chroma/v2 v2.23.0
+	github.com/alecthomas/chroma/v2 v2.23.1
 	github.com/alecthomas/go-check-sumtype v0.3.1
 	github.com/alexkohler/nakedret/v2 v2.0.6
 	github.com/alexkohler/prealloc v1.0.0
