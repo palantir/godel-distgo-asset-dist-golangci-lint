@@ -738,9 +738,8 @@ github.com/opencontainers/image-spec/specs-go/v1
 # github.com/palantir/amalgomate v1.52.0
 ## explicit; go 1.25.0
 github.com/palantir/amalgomate/amalgomated
-# github.com/palantir/distgo v1.88.0
+# github.com/palantir/distgo v1.89.0
 ## explicit; go 1.25.0
-github.com/palantir/distgo/assetapi
 github.com/palantir/distgo/dister
 github.com/palantir/distgo/dister/bin
 github.com/palantir/distgo/dister/distertester
@@ -753,7 +752,9 @@ github.com/palantir/distgo/distgo
 github.com/palantir/distgo/distgo/config
 github.com/palantir/distgo/distgo/config/internal/legacy
 github.com/palantir/distgo/distgo/config/internal/v0
+github.com/palantir/distgo/distgotaskprovider
 github.com/palantir/distgo/dockerbuilder/defaultdockerbuilder
+github.com/palantir/distgo/internal/assetapi
 github.com/palantir/distgo/internal/files
 github.com/palantir/distgo/projectversioner/git
 # github.com/palantir/distgo/pkg/git v1.0.0
