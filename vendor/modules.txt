@@ -701,8 +701,8 @@ github.com/nmiyake/pkg/errorstringer
 # github.com/nmiyake/pkg/gofiles v1.2.0
 ## explicit; go 1.16
 github.com/nmiyake/pkg/gofiles
-# github.com/nunnatsa/ginkgolinter v0.22.0
-## explicit; go 1.24.0
+# github.com/nunnatsa/ginkgolinter v0.23.0
+## explicit; go 1.25.0
 github.com/nunnatsa/ginkgolinter
 github.com/nunnatsa/ginkgolinter/config
 github.com/nunnatsa/ginkgolinter/internal/expression
