@@ -5,20 +5,23 @@ go 1.25.0
 require (
 	4d63.com/gocheckcompilerdirectives v1.3.0
 	4d63.com/gochecknoglobals v0.2.2
+	codeberg.org/polyfloyd/go-errorlint v1.9.0
 	dev.gaijin.team/go/exhaustruct/v4 v4.0.0
 	github.com/4meepo/tagalign v1.4.3
 	github.com/Abirdcfly/dupword v0.1.7
+	github.com/AdminBenni/iota-mixing v1.0.0
 	github.com/AlwxSin/noinlineerr v1.0.5
 	github.com/Antonboom/errname v1.1.1
 	github.com/Antonboom/nilnil v1.1.1
 	github.com/Antonboom/testifylint v1.6.4
 	github.com/BurntSushi/toml v1.6.0
 	github.com/Djarvur/go-err113 v0.1.1
+	github.com/MirrexOne/unqueryvet v1.5.3
 	github.com/OpenPeeDeeP/depguard/v2 v2.2.1
 	github.com/alecthomas/chroma/v2 v2.23.1
 	github.com/alecthomas/go-check-sumtype v0.3.1
 	github.com/alexkohler/nakedret/v2 v2.0.6
-	github.com/alexkohler/prealloc v1.0.0
+	github.com/alexkohler/prealloc v1.0.2
 	github.com/alingse/asasalint v0.0.11
 	github.com/alingse/nilnesserr v0.2.0
 	github.com/ashanbrown/forbidigo/v2 v2.3.0
@@ -45,11 +48,13 @@ require (
 	github.com/go-critic/go-critic v0.14.3
 	github.com/go-viper/mapstructure/v2 v2.5.0
 	github.com/go-xmlfmt/xmlfmt v1.1.3
+	github.com/godoc-lint/godoc-lint v0.11.1
 	github.com/gofrs/flock v0.13.0
+	github.com/golangci/asciicheck v0.5.0
 	github.com/golangci/dupl v0.0.0-20250308024227-f665c8d69b32
 	github.com/golangci/go-printf-func-name v0.1.1
 	github.com/golangci/gofmt v0.0.0-20250704145412-3e58ba0443c6
-	github.com/golangci/golines v0.0.0-20250821215611-d4663ad2c370
+	github.com/golangci/golines v0.15.0
 	github.com/golangci/misspell v0.8.0
 	github.com/golangci/plugin-module-register v0.1.2
 	github.com/golangci/revgrep v0.8.0
@@ -76,7 +81,7 @@ require (
 	github.com/ldez/usetesting v0.5.0
 	github.com/leonklingele/grouper v1.1.2
 	github.com/macabu/inamedparam v0.2.0
-	github.com/manuelarte/embeddedstructfieldcheck v0.3.0
+	github.com/manuelarte/embeddedstructfieldcheck v0.4.0
 	github.com/manuelarte/funcorder v0.5.0
 	github.com/maratori/testableexamples v1.0.1
 	github.com/maratori/testpackage v1.1.2
@@ -97,7 +102,6 @@ require (
 	github.com/palantir/pkg/specdir v1.3.0
 	github.com/pelletier/go-toml/v2 v2.2.4
 	github.com/pkg/errors v0.9.1
-	github.com/polyfloyd/go-errorlint v1.8.0
 	github.com/quasilyte/go-ruleguard/dsl v0.3.23
 	github.com/raeperd/recvcheck v0.2.0
 	github.com/rogpeppe/go-internal v1.14.1
@@ -118,7 +122,6 @@ require (
 	github.com/ssgreg/nlreturn/v2 v2.2.1
 	github.com/stbenjam/no-sprintf-host-port v0.3.1
 	github.com/stretchr/testify v1.11.1
-	github.com/tdakkota/asciicheck v0.4.1
 	github.com/tetafro/godot v1.5.4
 	github.com/timakin/bodyclose v0.0.0-20260129054331-73d1f95b84b4
 	github.com/timonwong/loggercheck v0.11.0
@@ -137,7 +140,7 @@ require (
 	go-simpler.org/sloglint v0.11.1
 	go.augendre.info/arangolint v0.4.0
 	go.augendre.info/fatcontext v0.9.0
-	go.uber.org/automaxprocs v1.6.0
+	go.yaml.in/yaml/v3 v3.0.4
 	golang.org/x/mod v0.33.0
 	golang.org/x/sync v0.19.0
 	golang.org/x/sys v0.41.0
@@ -184,7 +187,7 @@ require (
 	github.com/go-toolsmith/typep v1.1.0 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/golang/snappy v1.0.0 // indirect
-	github.com/golangci/golangci-lint/v2 v2.4.0 // indirect
+	github.com/golangci/golangci-lint/v2 v2.9.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/go-containerregistry v0.20.7 // indirect
 	github.com/gostaticanalysis/analysisutil v0.7.1 // indirect
@@ -195,6 +198,7 @@ require (
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/klauspost/compress v1.18.4 // indirect
 	github.com/klauspost/pgzip v1.2.6 // indirect
+	github.com/ldez/structtags v0.6.1 // indirect
 	github.com/lucasb-eyer/go-colorful v1.3.0 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-runewidth v0.0.19 // indirect
@@ -235,7 +239,6 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.1 // indirect
 	go.yaml.in/yaml/v2 v2.4.3 // indirect
-	go.yaml.in/yaml/v3 v3.0.4 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20260212183809-81e46e3db34a // indirect
 	golang.org/x/text v0.34.0 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
