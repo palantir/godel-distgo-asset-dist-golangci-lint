@@ -18,7 +18,7 @@ require (
 	github.com/alecthomas/chroma/v2 v2.23.1
 	github.com/alecthomas/go-check-sumtype v0.3.1
 	github.com/alexkohler/nakedret/v2 v2.0.6
-	github.com/alexkohler/prealloc v1.0.0
+	github.com/alexkohler/prealloc v1.0.2
 	github.com/alingse/asasalint v0.0.11
 	github.com/alingse/nilnesserr v0.2.0
 	github.com/ashanbrown/forbidigo/v2 v2.3.0
@@ -49,7 +49,7 @@ require (
 	github.com/golangci/dupl v0.0.0-20250308024227-f665c8d69b32
 	github.com/golangci/go-printf-func-name v0.1.1
 	github.com/golangci/gofmt v0.0.0-20250704145412-3e58ba0443c6
-	github.com/golangci/golines v0.0.0-20250821215611-d4663ad2c370
+	github.com/golangci/golines v0.15.0
 	github.com/golangci/misspell v0.8.0
 	github.com/golangci/plugin-module-register v0.1.2
 	github.com/golangci/revgrep v0.8.0
@@ -76,7 +76,7 @@ require (
 	github.com/ldez/usetesting v0.5.0
 	github.com/leonklingele/grouper v1.1.2
 	github.com/macabu/inamedparam v0.2.0
-	github.com/manuelarte/embeddedstructfieldcheck v0.3.0
+	github.com/manuelarte/embeddedstructfieldcheck v0.4.0
 	github.com/manuelarte/funcorder v0.5.0
 	github.com/maratori/testableexamples v1.0.1
 	github.com/maratori/testpackage v1.1.2
@@ -151,9 +151,14 @@ require (
 
 require (
 	codeberg.org/chavacava/garif v0.2.0 // indirect
+	codeberg.org/polyfloyd/go-errorlint v1.9.0 // indirect
 	dev.gaijin.team/go/golib v0.8.1 // indirect
+	github.com/AdminBenni/iota-mixing v1.0.0 // indirect
 	github.com/Masterminds/semver/v3 v3.4.0 // indirect
+	github.com/MirrexOne/unqueryvet v1.5.3 // indirect
 	github.com/VividCortex/ewma v1.2.0 // indirect
+	github.com/alecthomas/kingpin/v2 v2.4.0 // indirect
+	github.com/alecthomas/units v0.0.0-20240927000941-0f3dac36c52b // indirect
 	github.com/alfatraining/structtag v1.0.0 // indirect
 	github.com/andybalholm/brotli v1.2.0 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
@@ -183,8 +188,10 @@ require (
 	github.com/go-toolsmith/strparse v1.1.0 // indirect
 	github.com/go-toolsmith/typep v1.1.0 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
+	github.com/godoc-lint/godoc-lint v0.11.1 // indirect
 	github.com/golang/snappy v1.0.0 // indirect
-	github.com/golangci/golangci-lint/v2 v2.4.0 // indirect
+	github.com/golangci/asciicheck v0.5.0 // indirect
+	github.com/golangci/golangci-lint/v2 v2.9.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/go-containerregistry v0.20.7 // indirect
 	github.com/gostaticanalysis/analysisutil v0.7.1 // indirect
@@ -195,6 +202,7 @@ require (
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/klauspost/compress v1.18.4 // indirect
 	github.com/klauspost/pgzip v1.2.6 // indirect
+	github.com/ldez/structtags v0.6.1 // indirect
 	github.com/lucasb-eyer/go-colorful v1.3.0 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-runewidth v0.0.19 // indirect
@@ -230,6 +238,7 @@ require (
 	github.com/termie/go-shutil v0.0.0-20140729215957-bcacb06fecae // indirect
 	github.com/ulikunitz/xz v0.5.15 // indirect
 	github.com/vbatts/tar-split v0.12.2 // indirect
+	github.com/xhit/go-str2duration/v2 v2.1.0 // indirect
 	github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8 // indirect
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
 	go.uber.org/multierr v1.11.0 // indirect
@@ -237,6 +246,7 @@ require (
 	go.yaml.in/yaml/v2 v2.4.3 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20260212183809-81e46e3db34a // indirect
+	golang.org/x/term v0.39.0 // indirect
 	golang.org/x/text v0.34.0 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
 )

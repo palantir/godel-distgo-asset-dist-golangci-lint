@@ -1,7 +1,7 @@
 package errorlint
 
 import (
-	"github.com/polyfloyd/go-errorlint/errorlint"
+	"codeberg.org/polyfloyd/go-errorlint/errorlint"
 
 	"github.com/palantir/godel-distgo-asset-dist-golangci-lint/generated_src/golangcilint/internal/github.com/golangci/golangci-lint/v2/pkg/config"
 	"github.com/palantir/godel-distgo-asset-dist-golangci-lint/generated_src/golangcilint/internal/github.com/golangci/golangci-lint/v2/pkg/goanalysis"
