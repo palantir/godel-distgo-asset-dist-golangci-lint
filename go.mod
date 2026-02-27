@@ -114,7 +114,7 @@ require (
 	github.com/securego/gosec/v2 v2.23.0
 	github.com/sirupsen/logrus v1.9.4
 	github.com/sivchari/containedctx v1.0.3
-	github.com/sonatard/noctx v0.4.0
+	github.com/sonatard/noctx v0.5.0
 	github.com/sourcegraph/go-diff v0.7.0
 	github.com/spf13/cobra v1.10.2
 	github.com/spf13/pflag v1.0.10
