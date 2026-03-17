@@ -95,7 +95,7 @@ require (
 	github.com/nishanths/predeclared v0.2.2
 	github.com/nmiyake/pkg/gofiles v1.2.0
 	github.com/nunnatsa/ginkgolinter v0.23.0
-	github.com/palantir/amalgomate v1.53.0
+	github.com/palantir/amalgomate v1.54.0
 	github.com/palantir/distgo v1.91.0
 	github.com/palantir/godel/v2 v2.153.0
 	github.com/palantir/pkg/cobracli v1.3.0
