@@ -847,11 +847,10 @@ github.com/palantir/pkg/pkgpath
 # github.com/palantir/pkg/specdir v1.3.0
 ## explicit; go 1.25.0
 github.com/palantir/pkg/specdir
-# github.com/pelletier/go-toml/v2 v2.2.4
+# github.com/pelletier/go-toml/v2 v2.3.0
 ## explicit; go 1.21.0
 github.com/pelletier/go-toml/v2
 github.com/pelletier/go-toml/v2/internal/characters
-github.com/pelletier/go-toml/v2/internal/danger
 github.com/pelletier/go-toml/v2/internal/tracker
 github.com/pelletier/go-toml/v2/unstable
 # github.com/pierrec/lz4/v4 v4.1.26
