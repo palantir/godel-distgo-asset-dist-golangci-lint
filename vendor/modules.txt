@@ -1019,7 +1019,7 @@ github.com/subosito/gotenv
 # github.com/termie/go-shutil v0.0.0-20140729215957-bcacb06fecae
 ## explicit
 github.com/termie/go-shutil
-# github.com/tetafro/godot v1.5.4
+# github.com/tetafro/godot v1.5.6
 ## explicit; go 1.22
 github.com/tetafro/godot
 # github.com/timakin/bodyclose v0.0.0-20260129054331-73d1f95b84b4
