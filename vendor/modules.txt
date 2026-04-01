@@ -804,7 +804,7 @@ github.com/palantir/distgo/projectversioner/git
 # github.com/palantir/distgo/pkg/git v1.0.0
 ## explicit; go 1.13
 github.com/palantir/distgo/pkg/git
-# github.com/palantir/godel/v2 v2.154.0
+# github.com/palantir/godel/v2 v2.153.0
 ## explicit; go 1.26.0
 github.com/palantir/godel/v2/framework/artifactresolver
 github.com/palantir/godel/v2/framework/builtintasks
@@ -854,7 +854,7 @@ github.com/pelletier/go-toml/v2
 github.com/pelletier/go-toml/v2/internal/characters
 github.com/pelletier/go-toml/v2/internal/tracker
 github.com/pelletier/go-toml/v2/unstable
-# github.com/pierrec/lz4/v4 v4.1.26
+# github.com/pierrec/lz4/v4 v4.1.25
 ## explicit; go 1.17
 github.com/pierrec/lz4/v4
 github.com/pierrec/lz4/v4/internal/lz4block
