@@ -103,7 +103,7 @@ github.com/alingse/nilnesserr/internal/typeparams
 github.com/andybalholm/brotli
 github.com/andybalholm/brotli/flate
 github.com/andybalholm/brotli/matchfinder
-# github.com/ashanbrown/forbidigo/v2 v2.3.0
+# github.com/ashanbrown/forbidigo/v2 v2.3.1
 ## explicit; go 1.24.0
 github.com/ashanbrown/forbidigo/v2/forbidigo
 # github.com/ashanbrown/makezero/v2 v2.2.1
