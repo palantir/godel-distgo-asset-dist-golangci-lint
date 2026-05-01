@@ -21,7 +21,7 @@ require (
 	github.com/alecthomas/chroma/v2 v2.24.1
 	github.com/alecthomas/go-check-sumtype v0.3.1
 	github.com/alexkohler/nakedret/v2 v2.0.6
-	github.com/alexkohler/prealloc v1.0.3
+	github.com/alexkohler/prealloc v1.1.0
 	github.com/alingse/asasalint v0.0.11
 	github.com/alingse/nilnesserr v0.2.0
 	github.com/ashanbrown/forbidigo/v2 v2.3.1
@@ -187,7 +187,7 @@ require (
 	github.com/go-toolsmith/typep v1.1.0 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/golang/snappy v1.0.0 // indirect
-	github.com/golangci/golangci-lint/v2 v2.9.0 // indirect
+	github.com/golangci/golangci-lint/v2 v2.11.4 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/go-containerregistry v0.21.5 // indirect
 	github.com/gostaticanalysis/analysisutil v0.7.1 // indirect
