@@ -148,7 +148,7 @@ require (
 	gopkg.in/yaml.v2 v2.4.0
 	gopkg.in/yaml.v3 v3.0.1
 	honnef.co/go/tools v0.7.0
-	mvdan.cc/gofumpt v0.9.2
+	mvdan.cc/gofumpt v0.10.0
 	mvdan.cc/unparam v0.0.0-20251027182757-5beb8c8f8f15
 )
 
