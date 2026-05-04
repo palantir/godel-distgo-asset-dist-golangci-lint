@@ -130,7 +130,7 @@ require (
 	github.com/ultraware/funlen v0.2.0
 	github.com/ultraware/whitespace v0.2.0
 	github.com/uudashr/gocognit v1.2.1
-	github.com/uudashr/iface v1.4.1
+	github.com/uudashr/iface v1.4.2
 	github.com/xen0n/gosmopolitan v1.3.0
 	github.com/yagipy/maintidx v1.0.0
 	github.com/yeya24/promlinter v0.3.0
