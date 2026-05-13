@@ -3,7 +3,7 @@ module github.com/palantir/godel-distgo-asset-dist-golangci-lint
 go 1.26.0
 
 require (
-	4d63.com/gocheckcompilerdirectives v1.3.0
+	4d63.com/gocheckcompilerdirectives v1.4.0
 	4d63.com/gochecknoglobals v0.2.2
 	codeberg.org/polyfloyd/go-errorlint v1.9.0
 	dev.gaijin.team/go/exhaustruct/v4 v4.0.0
