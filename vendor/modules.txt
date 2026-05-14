@@ -779,7 +779,7 @@ github.com/opencontainers/go-digest
 ## explicit; go 1.18
 github.com/opencontainers/image-spec/specs-go
 github.com/opencontainers/image-spec/specs-go/v1
-# github.com/palantir/amalgomate v1.54.0
+# github.com/palantir/amalgomate v1.55.0
 ## explicit; go 1.26.0
 github.com/palantir/amalgomate/amalgomated
 # github.com/palantir/distgo v1.91.0
