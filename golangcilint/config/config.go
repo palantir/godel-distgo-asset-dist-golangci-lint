@@ -21,7 +21,7 @@ import (
 
 // Default version of golangci-lint to compile for output binary if no version is specified in configuration.
 // Should generally track/match the latest golangci-lint release: https://github.com/golangci/golangci-lint/releases
-const defaultVersion = "v2.9.0"
+const defaultVersion = "v2.12.2"
 
 type GolangCILint v0.Config
 
