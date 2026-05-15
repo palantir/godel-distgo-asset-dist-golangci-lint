@@ -5,6 +5,7 @@ go 1.26.0
 require (
 	4d63.com/gocheckcompilerdirectives v1.4.0
 	4d63.com/gochecknoglobals v0.2.2
+	charm.land/lipgloss/v2 v2.0.3
 	codeberg.org/polyfloyd/go-errorlint v1.9.0
 	dev.gaijin.team/go/exhaustruct/v4 v4.0.0
 	github.com/4meepo/tagalign v1.4.3
@@ -15,13 +16,15 @@ require (
 	github.com/Antonboom/nilnil v1.1.1
 	github.com/Antonboom/testifylint v1.6.4
 	github.com/BurntSushi/toml v1.6.0
+	github.com/ClickHouse/clickhouse-go-linter v1.2.0
 	github.com/Djarvur/go-err113 v0.1.1
+	github.com/Masterminds/semver/v3 v3.5.0
 	github.com/MirrexOne/unqueryvet v1.5.4
 	github.com/OpenPeeDeeP/depguard/v2 v2.2.1
 	github.com/alecthomas/chroma/v2 v2.24.1
 	github.com/alecthomas/go-check-sumtype v0.3.1
 	github.com/alexkohler/nakedret/v2 v2.0.6
-	github.com/alexkohler/prealloc v1.0.3
+	github.com/alexkohler/prealloc v1.1.0
 	github.com/alingse/asasalint v0.0.11
 	github.com/alingse/nilnesserr v0.2.0
 	github.com/ashanbrown/forbidigo/v2 v2.3.1
@@ -36,7 +39,6 @@ require (
 	github.com/butuzov/mirror v1.3.0
 	github.com/catenacyber/perfsprint v0.10.1
 	github.com/charithe/durationcheck v0.0.11
-	github.com/charmbracelet/lipgloss v1.1.0
 	github.com/ckaznocha/intrange v0.3.1
 	github.com/curioswitch/go-reassign v0.3.0
 	github.com/daixiang0/gci v0.14.0
@@ -58,6 +60,7 @@ require (
 	github.com/golangci/misspell v0.8.0
 	github.com/golangci/plugin-module-register v0.1.2
 	github.com/golangci/revgrep v0.8.0
+	github.com/golangci/rowserrcheck v0.0.0-20260419091836-c5f79b8a11ba
 	github.com/golangci/swaggoswag v0.0.0-20250504205917-77f2aca3143e
 	github.com/golangci/unconvert v0.0.0-20250410112200-a129a6e6413e
 	github.com/gordonklaus/ineffassign v0.2.0
@@ -65,7 +68,6 @@ require (
 	github.com/gostaticanalysis/nilerr v0.1.2
 	github.com/hashicorp/go-version v1.9.0
 	github.com/jgautheron/goconst v1.10.1
-	github.com/jingyugao/rowserrcheck v1.1.1
 	github.com/jjti/go-spancheck v0.6.5
 	github.com/julz/importas v0.2.0
 	github.com/karamaru-alpha/copyloopvar v1.2.2
@@ -106,12 +108,13 @@ require (
 	github.com/raeperd/recvcheck v0.3.0
 	github.com/rogpeppe/go-internal v1.14.1
 	github.com/ryancurrah/gomodguard v1.4.1
+	github.com/ryancurrah/gomodguard/v2 v2.1.3
 	github.com/ryanrolds/sqlclosecheck v0.6.0
 	github.com/sanposhiho/wastedassign/v2 v2.1.0
 	github.com/santhosh-tekuri/jsonschema/v6 v6.0.2
 	github.com/sashamelentyev/interfacebloat v1.1.0
 	github.com/sashamelentyev/usestdlibvars v1.29.0
-	github.com/securego/gosec/v2 v2.25.0
+	github.com/securego/gosec/v2 v2.26.1
 	github.com/sirupsen/logrus v1.9.4
 	github.com/sivchari/containedctx v1.0.3
 	github.com/sonatard/noctx v0.5.1
@@ -137,7 +140,7 @@ require (
 	github.com/ykadowak/zerologlint v0.1.5
 	gitlab.com/bosi/decorder v0.4.2
 	go-simpler.org/musttag v0.14.0
-	go-simpler.org/sloglint v0.11.1
+	go-simpler.org/sloglint v0.12.0
 	go.augendre.info/arangolint v0.4.0
 	go.augendre.info/fatcontext v0.9.0
 	go.yaml.in/yaml/v3 v3.0.4
@@ -155,18 +158,18 @@ require (
 require (
 	codeberg.org/chavacava/garif v0.2.1 // indirect
 	dev.gaijin.team/go/golib v0.8.1 // indirect
-	github.com/Masterminds/semver/v3 v3.5.0 // indirect
 	github.com/VividCortex/ewma v1.2.0 // indirect
 	github.com/alfatraining/structtag v1.0.0 // indirect
 	github.com/andybalholm/brotli v1.2.1 // indirect
-	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/ccojocar/zxcvbn-go v1.0.4 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/charmbracelet/colorprofile v0.4.3 // indirect
+	github.com/charmbracelet/ultraviolet v0.0.0-20251205161215-1948445e3318 // indirect
 	github.com/charmbracelet/x/ansi v0.11.7 // indirect
-	github.com/charmbracelet/x/cellbuf v0.0.15 // indirect
 	github.com/charmbracelet/x/term v0.2.2 // indirect
+	github.com/charmbracelet/x/termios v0.1.1 // indirect
+	github.com/charmbracelet/x/windows v0.2.2 // indirect
 	github.com/cheggaaa/pb/v3 v3.1.7 // indirect
 	github.com/clipperhouse/displaywidth v0.11.0 // indirect
 	github.com/clipperhouse/uax29/v2 v2.7.0 // indirect
@@ -187,7 +190,7 @@ require (
 	github.com/go-toolsmith/typep v1.1.0 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/golang/snappy v1.0.0 // indirect
-	github.com/golangci/golangci-lint/v2 v2.9.0 // indirect
+	github.com/golangci/golangci-lint/v2 v2.12.2 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/go-containerregistry v0.21.5 // indirect
 	github.com/gostaticanalysis/analysisutil v0.7.1 // indirect
@@ -203,7 +206,7 @@ require (
 	github.com/mattn/go-isatty v0.0.22 // indirect
 	github.com/mattn/go-runewidth v0.0.23 // indirect
 	github.com/mholt/archiver/v3 v3.5.1 // indirect
-	github.com/muesli/termenv v0.16.0 // indirect
+	github.com/muesli/cancelreader v0.2.2 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/nmiyake/pkg/dirs v1.1.0 // indirect
 	github.com/nmiyake/pkg/errorstringer v1.1.0 // indirect

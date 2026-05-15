@@ -23,6 +23,7 @@ func NewV5(settings *config.WSLv5Settings) *goanalysis.Linter {
 			AllowWholeBlock:	settings.AllowWholeBlock,
 			BranchMaxLines:		settings.BranchMaxLines,
 			CaseMaxLines:		settings.CaseMaxLines,
+			CuddleMaxStatements:	settings.CuddleMaxStatements,
 			Checks:			checkSet,
 		}
 	}
