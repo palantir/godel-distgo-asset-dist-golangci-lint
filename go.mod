@@ -21,7 +21,7 @@ require (
 	github.com/Masterminds/semver/v3 v3.5.0
 	github.com/MirrexOne/unqueryvet v1.5.4
 	github.com/OpenPeeDeeP/depguard/v2 v2.2.1
-	github.com/alecthomas/chroma/v2 v2.26.0
+	github.com/alecthomas/chroma/v2 v2.26.1
 	github.com/alecthomas/go-check-sumtype v0.3.1
 	github.com/alexkohler/nakedret/v2 v2.0.6
 	github.com/alexkohler/prealloc v1.1.0
