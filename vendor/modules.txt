@@ -810,7 +810,7 @@ github.com/palantir/distgo/projectversioner/git
 # github.com/palantir/distgo/pkg/git v1.0.0
 ## explicit; go 1.13
 github.com/palantir/distgo/pkg/git
-# github.com/palantir/godel/v2 v2.155.0
+# github.com/palantir/godel/v2 v2.156.0
 ## explicit; go 1.26.0
 github.com/palantir/godel/v2/framework/artifactresolver
 github.com/palantir/godel/v2/framework/builtintasks
@@ -929,8 +929,8 @@ github.com/raeperd/recvcheck
 # github.com/rivo/uniseg v0.4.7
 ## explicit; go 1.18
 github.com/rivo/uniseg
-# github.com/rogpeppe/go-internal v1.14.1
-## explicit; go 1.23
+# github.com/rogpeppe/go-internal v1.15.0
+## explicit; go 1.25
 github.com/rogpeppe/go-internal/diff
 github.com/rogpeppe/go-internal/internal/syscall/windows
 github.com/rogpeppe/go-internal/internal/syscall/windows/sysdll

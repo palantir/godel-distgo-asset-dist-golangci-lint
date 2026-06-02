@@ -101,14 +101,14 @@ require (
 	github.com/nunnatsa/ginkgolinter v0.23.0
 	github.com/palantir/amalgomate v1.56.0
 	github.com/palantir/distgo v1.91.0
-	github.com/palantir/godel/v2 v2.155.0
+	github.com/palantir/godel/v2 v2.156.0
 	github.com/palantir/pkg/cobracli v1.3.0
 	github.com/palantir/pkg/specdir v1.3.0
 	github.com/pelletier/go-toml/v2 v2.3.1
 	github.com/pkg/errors v0.9.1
 	github.com/quasilyte/go-ruleguard/dsl v0.3.23
 	github.com/raeperd/recvcheck v0.3.0
-	github.com/rogpeppe/go-internal v1.14.1
+	github.com/rogpeppe/go-internal v1.15.0
 	github.com/ryancurrah/gomodguard v1.4.1
 	github.com/ryancurrah/gomodguard/v2 v2.1.3
 	github.com/ryanrolds/sqlclosecheck v0.6.0
