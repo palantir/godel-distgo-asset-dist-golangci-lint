@@ -62,7 +62,7 @@ require (
 	github.com/golangci/misspell v0.8.0
 	github.com/golangci/plugin-module-register v0.1.2
 	github.com/golangci/revgrep v0.8.0
-	github.com/golangci/rowserrcheck v0.0.0-20260430141503-8d53bbc4a7d3
+	github.com/golangci/rowserrcheck v0.0.0-20260602201336-0ec5bd2741d7
 	github.com/golangci/swaggoswag v0.0.0-20250504205917-77f2aca3143e
 	github.com/golangci/unconvert v0.0.0-20250410112200-a129a6e6413e
 	github.com/gordonklaus/ineffassign v0.2.0
