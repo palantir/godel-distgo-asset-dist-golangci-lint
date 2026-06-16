@@ -46,7 +46,7 @@ require (
 	github.com/daixiang0/gci v0.14.0
 	github.com/denis-tingaikin/go-header v0.5.0
 	github.com/fatih/color v1.19.0
-	github.com/firefart/nonamedreturns v1.0.6
+	github.com/firefart/nonamedreturns v1.0.7
 	github.com/fzipp/gocyclo v0.6.0
 	github.com/ghostiam/protogetter v0.3.21
 	github.com/go-critic/go-critic v0.14.3
@@ -149,7 +149,7 @@ require (
 	golang.org/x/mod v0.37.0
 	golang.org/x/sync v0.21.0
 	golang.org/x/sys v0.46.0
-	golang.org/x/tools v0.45.0
+	golang.org/x/tools v0.46.0
 	gopkg.in/yaml.v2 v2.4.0
 	gopkg.in/yaml.v3 v3.0.1
 	honnef.co/go/tools v0.7.0
