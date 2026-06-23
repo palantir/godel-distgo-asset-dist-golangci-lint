@@ -395,8 +395,8 @@ github.com/palantir/pkg/pkgpath v1.4.0 h1:PJdSKRiLuXfsODgR2Y8Vw/aa8tGWtCkutQ9hFR
 github.com/palantir/pkg/pkgpath v1.4.0/go.mod h1:m/DtJs9uWPPrsA5TM7Jtyeiab8zAcjoLFjWW9uFLK+o=
 github.com/palantir/pkg/specdir v1.3.0 h1:Mnhts9SUGO3NvHxDUF4obssS0wN/ubUGzv8XGdM7QQc=
 github.com/palantir/pkg/specdir v1.3.0/go.mod h1:DPGNNuumVF3DsL0u5pC/p/38GbBIQejn++HUH9vE3YQ=
-github.com/pelletier/go-toml/v2 v2.4.0 h1:Mwu0mAkUKbittDs3/ADDWXqMmq3EOK2VHiuCkV00Row=
-github.com/pelletier/go-toml/v2 v2.4.0/go.mod h1:2gIqNv+qfxSVS7cM2xJQKtLSTLUE9V8t9Stt+h56mCY=
+github.com/pelletier/go-toml/v2 v2.4.1 h1:j5OMOImsH+j2k7GJ5YO+RxfWwohNiH6t5zB/+h3bagc=
+github.com/pelletier/go-toml/v2 v2.4.1/go.mod h1:2gIqNv+qfxSVS7cM2xJQKtLSTLUE9V8t9Stt+h56mCY=
 github.com/pierrec/lz4/v4 v4.1.2/go.mod h1:gZWDp/Ze/IJXGXf23ltt2EXimqmTUXEy0GFuRQyBid4=
 github.com/pierrec/lz4/v4 v4.1.27 h1:+PhzhWDrjRj89TH2sw43nE3+4+W8lSxIuQadEHZyjUk=
 github.com/pierrec/lz4/v4 v4.1.27/go.mod h1:EoQMVJgeeEOMsCqCzqFm2O0cJvljX2nGZjcRIPL34O4=
