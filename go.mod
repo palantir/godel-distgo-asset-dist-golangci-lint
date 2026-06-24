@@ -104,7 +104,7 @@ require (
 	github.com/palantir/godel/v2 v2.157.0
 	github.com/palantir/pkg/cobracli v1.3.0
 	github.com/palantir/pkg/specdir v1.3.0
-	github.com/pelletier/go-toml/v2 v2.4.1
+	github.com/pelletier/go-toml/v2 v2.4.2
 	github.com/pkg/errors v0.9.1
 	github.com/quasilyte/go-ruleguard/dsl v0.3.23
 	github.com/raeperd/recvcheck v0.3.0
