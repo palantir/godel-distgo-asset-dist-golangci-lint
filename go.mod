@@ -162,7 +162,7 @@ require (
 	dev.gaijin.team/go/golib v0.8.1 // indirect
 	github.com/VividCortex/ewma v1.2.0 // indirect
 	github.com/alfatraining/structtag v1.0.0 // indirect
-	github.com/andybalholm/brotli v1.2.1 // indirect
+	github.com/andybalholm/brotli v1.2.2 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/ccojocar/zxcvbn-go v1.0.4 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
