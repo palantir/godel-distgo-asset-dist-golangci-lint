@@ -101,7 +101,7 @@ require (
 	github.com/nunnatsa/ginkgolinter v0.23.0
 	github.com/palantir/amalgomate v1.57.0
 	github.com/palantir/distgo v1.91.0
-	github.com/palantir/godel/v2 v2.157.0
+	github.com/palantir/godel/v2 v2.158.0
 	github.com/palantir/pkg/cobracli v1.3.0
 	github.com/palantir/pkg/specdir v1.3.0
 	github.com/pelletier/go-toml/v2 v2.4.3
@@ -148,7 +148,7 @@ require (
 	go.yaml.in/yaml/v3 v3.0.4
 	golang.org/x/mod v0.37.0
 	golang.org/x/sync v0.22.0
-	golang.org/x/sys v0.46.0
+	golang.org/x/sys v0.47.0
 	golang.org/x/tools v0.47.0
 	gopkg.in/yaml.v2 v2.4.0
 	gopkg.in/yaml.v3 v3.0.1
