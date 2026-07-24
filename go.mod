@@ -204,7 +204,7 @@ require (
 	github.com/klauspost/pgzip v1.2.6 // indirect
 	github.com/ldez/structtags v0.6.1 // indirect
 	github.com/lucasb-eyer/go-colorful v1.4.0 // indirect
-	github.com/mattn/go-isatty v0.0.23 // indirect
+	github.com/mattn/go-isatty v0.0.24 // indirect
 	github.com/mattn/go-runewidth v0.0.24 // indirect
 	github.com/mholt/archiver/v3 v3.5.1 // indirect
 	github.com/muesli/cancelreader v0.2.2 // indirect
