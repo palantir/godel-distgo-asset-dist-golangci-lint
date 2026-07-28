@@ -21,6 +21,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"slices"
 	"strings"
 
 	"github.com/google/go-containerregistry/pkg/v1/layout"
@@ -58,7 +59,9 @@ func NewDefaultDockerBuilder(buildArgs []string, buildArgsScript string) distgo.
 	return &DefaultDockerBuilder{
 		BuildArgs:       buildArgs,
 		BuildArgsScript: buildArgsScript,
-		OutputType:      DockerDaemon,
+		// Produce an OCI layout (the reproducible published artifact, and the on-disk base a dependent product's FROM
+		// resolves against) and load the host-arch image into the local daemon for `docker run`.
+		OutputType: OCILayout | DockerDaemon,
 	}
 }
 
@@ -75,46 +78,55 @@ func (d *DefaultDockerBuilder) TypeName() (string, error) {
 }
 
 func (d *DefaultDockerBuilder) RunDockerBuild(dockerID distgo.DockerID, productTaskOutputInfo distgo.ProductTaskOutputInfo, verbose, dryRun bool, stdout io.Writer) error {
+	if d.OutputType&allOutputs == 0 {
+		return errors.New("a valid output type of docker builder must be specified")
+	}
+
 	dockerBuilderOutputInfo := productTaskOutputInfo.Product.DockerOutputInfos.DockerBuilderOutputInfos[dockerID]
 	contextDirPath := filepath.Join(productTaskOutputInfo.Project.ProjectDir, dockerBuilderOutputInfo.ContextDir)
-	args := []string{
+
+	// baseArgs are common to every output type. Each output below builds its "docker buildx build" invocation by
+	// cloning baseArgs and appending its own "--output=..." plus the context dir.
+	baseArgs := []string{
 		"buildx",
 		"build",
 		"--file", filepath.Join(contextDirPath, dockerBuilderOutputInfo.DockerfilePath),
 		"--build-arg", "SOURCE_DATE_EPOCH=0",
 	}
 	for _, tag := range dockerBuilderOutputInfo.RenderedTags {
-		args = append(args,
-			"-t", tag,
-		)
+		baseArgs = append(baseArgs, "-t", tag)
 	}
-	args = append(args, d.BuildArgs...)
+	baseArgs = append(baseArgs, d.BuildArgs...)
 	if d.BuildArgsScript != "" {
 		buildArgsFromScript, err := distgo.DockerBuildArgsFromScript(dockerID, productTaskOutputInfo, d.BuildArgsScript)
 		if err != nil {
 			return err
 		}
-		args = append(args, buildArgsFromScript...)
+		baseArgs = append(baseArgs, buildArgsFromScript...)
 	}
-
-	if d.OutputType&allOutputs == 0 {
-		return errors.New("a valid output type of docker builder must be specified")
-	}
+	// Resolve a "FROM <dependency image tag>" from the dependency's on-disk OCI layout instead of a registry.
+	baseArgs = append(baseArgs, dependencyImageBuildContextArgs(productTaskOutputInfo, dryRun)...)
 
 	if err := d.ensureDockerContainerDriver(dockerID, verbose, dryRun, stdout); err != nil {
 		return err
 	}
 
-	if d.OutputType&OCILayout != 0 {
-		destDir := productTaskOutputInfo.ProductDockerOCIDistOutputDir(dockerID)
+	// A product with a Docker image but no dist has no OCI dist output dir ("" from ProductDockerOCIDistOutputDir), so
+	// there is nowhere to write the layout: skip OCI output (any daemon output below still runs).
+	if destDir := productTaskOutputInfo.ProductDockerOCIDistOutputDir(dockerID); d.OutputType&OCILayout != 0 && destDir != "" {
 		if err := os.MkdirAll(destDir, 0755); err != nil {
 			return errors.Wrapf(err, "failed to create directory %s for OCI output", destDir)
 		}
 		destFile := filepath.Join(destDir, "image.tar")
 
-		ociArgs := append(args, d.BuildxPlatformArg, fmt.Sprintf("--output=type=oci,rewrite-timestamp=true,dest=%s", destFile), contextDirPath)
-		cmd := exec.Command("docker", ociArgs...)
-		if err := distgo.RunCommandWithVerboseOption(cmd, verbose, dryRun, stdout); err != nil {
+		ociArgs := slices.Clone(baseArgs)
+		// BuildxPlatformArg is empty in the default "host arch only" mode; appending it then would pass an empty
+		// positional argument, which `docker buildx build` rejects.
+		if d.BuildxPlatformArg != "" {
+			ociArgs = append(ociArgs, d.BuildxPlatformArg)
+		}
+		ociArgs = append(ociArgs, fmt.Sprintf("--output=type=oci,rewrite-timestamp=true,dest=%s", destFile), contextDirPath)
+		if err := distgo.RunCommandWithVerboseOption(exec.Command("docker", ociArgs...), verbose, dryRun, stdout); err != nil {
 			return err
 		}
 		if !dryRun {
@@ -124,9 +136,8 @@ func (d *DefaultDockerBuilder) RunDockerBuild(dockerID distgo.DockerID, productT
 		}
 	}
 	if d.OutputType&DockerDaemon != 0 {
-		daemonArgs := append(args, "--output=type=docker,rewrite-timestamp=true", contextDirPath)
-		cmd := exec.Command("docker", daemonArgs...)
-		if err := distgo.RunCommandWithVerboseOption(cmd, verbose, dryRun, stdout); err != nil {
+		daemonArgs := append(slices.Clone(baseArgs), "--output=type=docker,rewrite-timestamp=true", contextDirPath)
+		if err := distgo.RunCommandWithVerboseOption(exec.Command("docker", daemonArgs...), verbose, dryRun, stdout); err != nil {
 			return err
 		}
 	}
@@ -139,6 +150,21 @@ func (d *DefaultDockerBuilder) RunDockerBuild(dockerID distgo.DockerID, productT
 // we know all the rendered tags at publish time, we can move the "actual" image index back to the top level and do a
 // publish per-tag.
 func (d *DefaultDockerBuilder) extractToOCILayout(destOCILayoutDir, sourceOCITarball string) error {
+	// Clear any prior extraction output (keeping the source tarball) first: the tar extractor won't overwrite existing
+	// files, so re-running "docker build" at an unchanged version (e.g. a "-dirty" version) would otherwise fail.
+	entries, err := os.ReadDir(destOCILayoutDir)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read OCI output directory %s", destOCILayoutDir)
+	}
+	sourceBase := filepath.Base(sourceOCITarball)
+	for _, entry := range entries {
+		if entry.Name() == sourceBase {
+			continue
+		}
+		if err := os.RemoveAll(filepath.Join(destOCILayoutDir, entry.Name())); err != nil {
+			return errors.Wrapf(err, "failed to remove stale OCI layout artifact %s", entry.Name())
+		}
+	}
 	if err := archiver.DefaultTar.Unarchive(sourceOCITarball, destOCILayoutDir); err != nil {
 		return errors.Wrapf(err, "failed to extract OCI tarball %s to location %s", sourceOCITarball, destOCILayoutDir)
 	}
@@ -153,9 +179,13 @@ func (d *DefaultDockerBuilder) extractToOCILayout(destOCILayoutDir, sourceOCITar
 	if len(idxManifest.Manifests) == 0 {
 		return errors.New("top-level OCI image index does not contain any manifests. While this is a valid image index, it is unexpected and likely means something erroneous happened earlier in the build")
 	}
-	if err := os.Rename(filepath.Join(destOCILayoutDir, "blobs", idxManifest.Manifests[0].Digest.Algorithm, idxManifest.Manifests[0].Digest.Hex), filepath.Join(destOCILayoutDir, "index.json")); err != nil {
+	indexDesc := idxManifest.Manifests[0]
+	if err := os.Rename(filepath.Join(destOCILayoutDir, "blobs", indexDesc.Digest.Algorithm, indexDesc.Digest.Hex), filepath.Join(destOCILayoutDir, "index.json")); err != nil {
 		return err
 	}
+	// The buildx-consumable wrapper layout that lets a dependent's "FROM" resolve this image from disk is written by
+	// the Docker build task after the builder runs (distgo.WriteDockerBuildContextLayout), not here, so it survives
+	// re-layering builders that rewrite this layout.
 	return nil
 }
 
