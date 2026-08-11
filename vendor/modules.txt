@@ -1079,7 +1079,7 @@ github.com/xen0n/gosmopolitan
 # github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8
 ## explicit
 github.com/xi2/xz
-# github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e
+# github.com/xo/terminfo v1.0.0
 ## explicit; go 1.19
 github.com/xo/terminfo
 # github.com/yagipy/maintidx v1.0.0
