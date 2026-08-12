@@ -243,7 +243,7 @@ require (
 	go.uber.org/zap v1.28.0 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20260810151157-a8b543ca52da // indirect
 	golang.org/x/text v0.41.0 // indirect
-	google.golang.org/protobuf v1.36.11 // indirect
+	google.golang.org/protobuf v1.36.12 // indirect
 )
 
 tool github.com/golangci/golangci-lint/v2/cmd/golangci-lint
