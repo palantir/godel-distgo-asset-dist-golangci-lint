@@ -117,7 +117,7 @@ require (
 	github.com/sashamelentyev/interfacebloat v1.1.0
 	github.com/sashamelentyev/usestdlibvars v1.29.0
 	github.com/securego/gosec/v2 v2.28.0
-	github.com/sirupsen/logrus v1.9.4
+	github.com/sirupsen/logrus v1.10.0
 	github.com/sivchari/containedctx v1.0.3
 	github.com/sonatard/noctx v0.5.1
 	github.com/sourcegraph/go-diff v0.8.0
