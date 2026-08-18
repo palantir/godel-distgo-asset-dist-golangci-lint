@@ -218,7 +218,7 @@ require (
 	github.com/palantir/pkg/gittest v1.3.0 // indirect
 	github.com/palantir/pkg/matcher v1.3.0 // indirect
 	github.com/palantir/pkg/pkgpath v1.4.0 // indirect
-	github.com/pierrec/lz4/v4 v4.1.28 // indirect
+	github.com/pierrec/lz4/v4 v4.1.29 // indirect
 	github.com/prometheus/client_golang v1.24.1 // indirect
 	github.com/prometheus/client_model v0.6.2 // indirect
 	github.com/prometheus/common v0.70.1 // indirect
