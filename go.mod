@@ -126,7 +126,7 @@ require (
 	github.com/spf13/viper v1.21.0
 	github.com/ssgreg/nlreturn/v2 v2.2.1
 	github.com/stbenjam/no-sprintf-host-port v0.3.1
-	github.com/stretchr/testify v1.12.0
+	github.com/stretchr/testify v1.12.1
 	github.com/tetafro/godot v1.5.6
 	github.com/timakin/bodyclose v0.0.0-20260723120731-857993a2939c
 	github.com/timonwong/loggercheck v0.11.0
