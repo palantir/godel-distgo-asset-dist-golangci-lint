@@ -153,7 +153,7 @@ require (
 	golang.org/x/tools v0.49.0
 	gopkg.in/yaml.v2 v2.4.0
 	gopkg.in/yaml.v3 v3.0.1
-	honnef.co/go/tools v0.8.0-rc.1
+	honnef.co/go/tools v0.8.0
 	mvdan.cc/gofumpt v0.11.0
 	mvdan.cc/unparam v0.0.0-20260820064413-a201bf8e0538
 )
