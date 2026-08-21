@@ -97,7 +97,7 @@ require (
 	github.com/nishanths/exhaustive v0.12.0
 	github.com/nishanths/predeclared v0.2.2
 	github.com/nmiyake/pkg/gofiles v1.2.0
-	github.com/nunnatsa/ginkgolinter v0.23.1
+	github.com/nunnatsa/ginkgolinter v0.24.0
 	github.com/palantir/amalgomate v1.58.0
 	github.com/palantir/distgo v1.91.0
 	github.com/palantir/godel/v2 v2.173.0
