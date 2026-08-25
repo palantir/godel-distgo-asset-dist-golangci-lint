@@ -238,7 +238,7 @@ require (
 	github.com/xo/terminfo v1.0.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.28.0 // indirect
-	golang.org/x/exp/typeparams v0.0.0-20260820142414-ca536658362e // indirect
+	golang.org/x/exp/typeparams v0.0.0-20260824195058-e88cd73687aa // indirect
 	golang.org/x/text v0.41.0 // indirect
 	google.golang.org/protobuf v1.36.12 // indirect
 )
