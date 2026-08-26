@@ -15,13 +15,18 @@
 package config
 
 import (
+	_ "embed"
+
 	"github.com/palantir/godel-distgo-asset-dist-golangci-lint/golangcilint"
 	v0 "github.com/palantir/godel-distgo-asset-dist-golangci-lint/golangcilint/config/internal/v0"
 )
 
 // Default version of golangci-lint to compile for output binary if no version is specified in configuration.
-// Should generally track/match the latest golangci-lint release: https://github.com/golangci/golangci-lint/releases
-const defaultVersion = "v2.12.2"
+// This is kept in sync with the version of golangci-lint used in the go.mod file in this repository by the generate
+// task.
+//
+//go:embed internal/golangci-lint-version.txt
+var defaultVersion string
 
 type GolangCILint v0.Config
 

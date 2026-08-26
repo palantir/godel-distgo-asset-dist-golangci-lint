@@ -1,0 +1,6 @@
+generators:
+  golangci-lint-version:
+    go-generate-dir: golangcilint/config/internal
+    gen-paths:
+      paths:
+        - golangcilint/config/internal/golangci-lint-version.txt
