@@ -17,6 +17,7 @@ func New(settings *config.DupWordSettings) *goanalysis.Linter {
 			"keyword":		strings.Join(settings.Keywords, ","),
 			"ignore":		strings.Join(settings.Ignore, ","),
 			"comments-only":	settings.CommentsOnly,
+			"skip-raw-strings":	settings.SkipRawStrings,
 		}
 	}
 

@@ -1,8 +1,6 @@
 module github.com/palantir/godel-distgo-asset-dist-golangci-lint
 
-go 1.26.0
-
-toolchain go1.26.5
+go 1.27.0
 
 require (
 	4d63.com/gocheckcompilerdirectives v1.4.0
@@ -10,6 +8,7 @@ require (
 	charm.land/lipgloss/v2 v2.0.6
 	codeberg.org/polyfloyd/go-errorlint v1.9.0
 	dev.gaijin.team/go/exhaustruct/v4 v4.0.0
+	dev.gaijin.team/go/exhaustruct/v5 v5.0.3
 	github.com/4meepo/tagalign v1.4.3
 	github.com/Abirdcfly/dupword v0.1.8
 	github.com/AdminBenni/iota-mixing v1.0.0
@@ -152,7 +151,7 @@ require (
 	golang.org/x/tools v0.49.0
 	gopkg.in/yaml.v2 v2.4.0
 	gopkg.in/yaml.v3 v3.0.1
-	honnef.co/go/tools v0.7.0
+	honnef.co/go/tools v0.8.0-rc.1
 	mvdan.cc/gofumpt v0.11.0
 	mvdan.cc/unparam v0.0.0-20260818115549-3f964bcb5673
 )
@@ -190,7 +189,7 @@ require (
 	github.com/go-toolsmith/typep v1.1.0 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/golang/snappy v1.0.0 // indirect
-	github.com/golangci/golangci-lint/v2 v2.12.2 // indirect
+	github.com/golangci/golangci-lint/v2 v2.13.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/go-containerregistry v0.21.9 // indirect
 	github.com/gostaticanalysis/analysisutil v0.7.1 // indirect

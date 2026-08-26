@@ -7,6 +7,7 @@ import (
 	"github.com/uudashr/iface/opaque"
 	"github.com/uudashr/iface/unexported"
 	"github.com/uudashr/iface/unused"
+	"github.com/uudashr/iface/unusedmethod"
 	"golang.org/x/tools/go/analysis"
 
 	"github.com/palantir/godel-distgo-asset-dist-golangci-lint/generated_src/golangcilint/internal/github.com/golangci/golangci-lint/v2/pkg/config"
@@ -33,6 +34,7 @@ func analyzersFromSettings(settings *config.IfaceSettings) []*analysis.Analyzer 
 		"unused":	unused.Analyzer,
 		"opaque":	opaque.Analyzer,
 		"unexported":	unexported.Analyzer,
+		"unusedmethod":	unusedmethod.Analyzer,
 	}
 
 	if settings == nil || len(settings.Enable) == 0 {
