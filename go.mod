@@ -115,7 +115,7 @@ require (
 	github.com/santhosh-tekuri/jsonschema/v6 v6.0.3
 	github.com/sashamelentyev/interfacebloat v1.1.0
 	github.com/sashamelentyev/usestdlibvars v1.29.0
-	github.com/securego/gosec/v2 v2.28.0
+	github.com/securego/gosec/v2 v2.29.0
 	github.com/sirupsen/logrus v1.10.2
 	github.com/sivchari/containedctx v1.0.3
 	github.com/sonatard/noctx v0.5.1
