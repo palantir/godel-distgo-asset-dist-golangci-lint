@@ -21,6 +21,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 
 	"github.com/palantir/distgo/dister/osarchbin"
 	"github.com/palantir/distgo/distgo"
@@ -99,6 +100,11 @@ func (d *Dister) getOSArchBinDister() distgo.Dister {
 }
 
 func (d *Dister) RunDist(distID distgo.DistID, productTaskOutputInfo distgo.ProductTaskOutputInfo) ([]byte, error) {
+	goToolchain, err := projectGoToolchain(productTaskOutputInfo.Project.ProjectDir)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to determine target project Go toolchain")
+	}
+
 	distWorkDir := productTaskOutputInfo.ProductDistWorkDirs()[distID]
 	outputPathsForOSArchs := make(map[string][]string)
 	for _, osArch := range d.OSArchs {
@@ -120,9 +126,11 @@ func (d *Dister) RunDist(distID distgo.DistID, productTaskOutputInfo distgo.Prod
 			cmd.Stderr = outputBuf
 			envVars := cmd.Environ()
 			for k, v := range d.Environment {
-				envVars = append(envVars, fmt.Sprintf("%s=%s", k, v))
+				envVars = setEnvironmentVariable(envVars, k, v)
 			}
-			envVars = append(envVars, "GOOS="+osArch.OS, "GOARCH="+osArch.Arch)
+			envVars = setEnvironmentVariable(envVars, "GOTOOLCHAIN", goToolchain)
+			envVars = setEnvironmentVariable(envVars, "GOOS", osArch.OS)
+			envVars = setEnvironmentVariable(envVars, "GOARCH", osArch.Arch)
 			cmd.Env = envVars
 			cmd.Dir = currOutputBuildDir
 		}); rVal != 0 || err != nil {
@@ -147,6 +155,33 @@ func (d *Dister) RunDist(distID distgo.DistID, productTaskOutputInfo distgo.Prod
 		return nil, errors.Wrapf(err, "failed to marshal outputPathsForOSArchs as JSON")
 	}
 	return jsonBytes, nil
+}
+
+func projectGoToolchain(projectDir string) (string, error) {
+	cmd := exec.Command("go", "env", "GOVERSION")
+	cmd.Dir = projectDir
+
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return "", errors.Wrapf(err, "command %q failed: %s", strings.Join(cmd.Args, " "), strings.TrimSpace(string(output)))
+	}
+
+	goToolchain := strings.TrimSpace(string(output))
+	if !strings.HasPrefix(goToolchain, "go1.") {
+		return "", errors.Errorf("command %q returned invalid Go toolchain version %q", strings.Join(cmd.Args, " "), goToolchain)
+	}
+	return goToolchain, nil
+}
+
+func setEnvironmentVariable(environment []string, key, value string) []string {
+	prefix := key + "="
+	result := make([]string, 0, len(environment)+1)
+	for _, environmentVariable := range environment {
+		if !strings.HasPrefix(environmentVariable, prefix) {
+			result = append(result, environmentVariable)
+		}
+	}
+	return append(result, fmt.Sprintf("%s=%s", key, value))
 }
 
 func (d *Dister) GenerateDistArtifacts(distID distgo.DistID, productTaskOutputInfo distgo.ProductTaskOutputInfo, runDistResult []byte) error {
