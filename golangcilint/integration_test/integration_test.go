@@ -85,6 +85,7 @@ products:
           environment:
             CGO_ENABLED: "0"
             GOFLAGS: "-mod=readonly"
+          golangci-lint-version: v2.13.0
           plugins:
             - module: 'github.com/golangci/example-plugin-module-linter'
               version: v0.1.0
