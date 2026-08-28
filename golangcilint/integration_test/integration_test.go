@@ -15,7 +15,11 @@
 package integration
 
 import (
+	"fmt"
+	"os"
+	"os/exec"
 	"path/filepath"
+	"runtime"
 	"testing"
 
 	"github.com/nmiyake/pkg/gofiles"
@@ -114,6 +118,97 @@ Finished creating golangci-lint distribution for foo
 						), true,
 					)
 					assert.NoError(t, wantLayout.Validate(filepath.Join(projectDir, "out", "dist", "foo", "1.0.0", "golangci-lint"), nil))
+				},
+			},
+		},
+	)
+}
+
+func TestDistUsesTargetProjectGoToolchain(t *testing.T) {
+	const (
+		supportedGoVersion = "1.26"
+		targetGoToolchain  = "go1.27.0"
+	)
+
+	t.Setenv("INTOTO_DISABLED", "true")
+	t.Setenv("ITAR", "")
+	t.Setenv("RELEASE_TYPE", "")
+
+	pluginProvider, err := pluginapitester.NewPluginProviderFromLocator(distgoPluginLocator, distgoPluginResolver)
+	require.NoError(t, err)
+
+	assetPath, err := products.Bin("dist-golangci-lint-asset")
+	require.NoError(t, err)
+
+	hostOSArch := runtime.GOOS + "-" + runtime.GOARCH
+	distertester.RunAssetDistTest(t,
+		pluginProvider,
+		pluginapitester.NewAssetProvider(assetPath),
+		[]distertester.TestCase{
+			{
+				Name: "uses target project Go toolchain",
+				Specs: []gofiles.GoFileSpec{
+					{
+						RelPath: "go.mod",
+						Src:     "module foo\n\ngo " + supportedGoVersion + ".0\n\ntoolchain " + targetGoToolchain,
+					},
+					{
+						RelPath: "foo/foo.go",
+						Src:     `package main; func main() {}`,
+					},
+				},
+				ConfigFiles: map[string]string{
+					"godel/config/godel.yml": `exclude:
+  names:
+    - "\\..+"
+    - "vendor"
+  paths:
+    - "godel"
+`,
+					"godel/config/dist-plugin.yml": fmt.Sprintf(`
+products:
+  foo:
+    dist:
+      disters:
+        type: golangci-lint
+        config:
+          os-archs:
+            - os: %s
+              arch: %s
+          environment:
+            CGO_ENABLED: "0"
+            GOFLAGS: "-mod=readonly"
+          plugins:
+            - module: 'github.com/golangci/example-plugin-module-linter'
+              version: v0.1.0
+    publish:
+      group-id: com.test.group
+`, runtime.GOOS, runtime.GOARCH),
+				},
+				WantOutput: func(projectDir string) string {
+					return fmt.Sprintf("Creating distribution for foo at out/dist/foo/1.0.0/golangci-lint/foo-1.0.0-%s.tgz\nFinished creating golangci-lint distribution for foo\n", hostOSArch)
+				},
+				Validate: func(projectDir string) {
+					executableName := "foo"
+					if runtime.GOOS == "windows" {
+						executableName += ".exe"
+					}
+					binaryPath := filepath.Join(projectDir, "out", "dist", "foo", "1.0.0", "golangci-lint", "foo-1.0.0", hostOSArch, executableName)
+
+					versionOutput, err := exec.Command("go", "version", "-m", binaryPath).CombinedOutput()
+					t.Logf("go version -m %s:\n%s", binaryPath, versionOutput)
+					require.NoError(t, err)
+					assert.Contains(t, string(versionOutput), ": "+targetGoToolchain+"\n")
+
+					lintDir := t.TempDir()
+					require.NoError(t, os.WriteFile(filepath.Join(lintDir, "go.mod"), []byte("module example.com/integration\n\ngo "+supportedGoVersion+".0\n"), 0o644))
+					require.NoError(t, os.WriteFile(filepath.Join(lintDir, "main.go"), []byte("package integration\n"), 0o644))
+
+					lintCmd := exec.Command(binaryPath, "run")
+					lintCmd.Dir = lintDir
+					lintOutput, err := lintCmd.CombinedOutput()
+					t.Logf("golangci-lint output:\n%s", lintOutput)
+					require.NoError(t, err)
 				},
 			},
 		},
