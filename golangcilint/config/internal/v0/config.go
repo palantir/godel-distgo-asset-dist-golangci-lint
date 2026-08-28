@@ -29,7 +29,7 @@ type Config struct {
 	// Version is the golangci-lint version of the source used to build the binary.
 	// If empty, uses a default version hard-coded in the dister.
 	// Corresponds to the internal golangci-lint configuration field github.com/golangci/golangci-lint/pkg/commands/internal.Configuration.Version (https://github.com/golangci/golangci-lint/blob/7ad7949ca9bf236ee4f349de2cb384d5f7c90b08/pkg/commands/internal/configuration.go#L20).
-	Version string `yaml:"version,omitempty"`
+	Version string `yaml:"golangci-lint-version,omitempty"`
 
 	// Plugins configuration that specifies the plugins to include in the custom build.
 	// Corresponds to the internal golangci-lint configuration field github.com/golangci/golangci-lint/pkg/commands/internal.Configuration.Plugins (https://github.com/golangci/golangci-lint/blob/7ad7949ca9bf236ee4f349de2cb384d5f7c90b08/pkg/commands/internal/configuration.go#L29).
