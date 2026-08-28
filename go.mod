@@ -100,7 +100,7 @@ require (
 	github.com/nunnatsa/ginkgolinter v0.24.0
 	github.com/palantir/amalgomate v1.59.0
 	github.com/palantir/distgo v1.91.0
-	github.com/palantir/godel/v2 v2.176.0
+	github.com/palantir/godel/v2 v2.178.0
 	github.com/palantir/pkg/cobracli v1.3.0
 	github.com/palantir/pkg/specdir v1.3.0
 	github.com/pelletier/go-toml/v2 v2.4.3
