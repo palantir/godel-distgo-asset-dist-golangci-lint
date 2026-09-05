@@ -99,7 +99,7 @@ require (
 	github.com/nmiyake/pkg/gofiles v1.2.0
 	github.com/nunnatsa/ginkgolinter v0.24.0
 	github.com/palantir/amalgomate v1.60.0
-	github.com/palantir/distgo v1.91.0
+	github.com/palantir/distgo v1.115.0
 	github.com/palantir/godel/v2 v2.181.0
 	github.com/palantir/pkg/cobracli v1.4.0
 	github.com/palantir/pkg/specdir v1.4.0
