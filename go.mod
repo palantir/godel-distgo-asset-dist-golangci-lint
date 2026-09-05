@@ -102,7 +102,7 @@ require (
 	github.com/palantir/distgo v1.91.0
 	github.com/palantir/godel/v2 v2.180.0
 	github.com/palantir/pkg/cobracli v1.4.0
-	github.com/palantir/pkg/specdir v1.3.0
+	github.com/palantir/pkg/specdir v1.4.0
 	github.com/pelletier/go-toml/v2 v2.4.3
 	github.com/pkg/errors v0.9.1
 	github.com/quasilyte/go-ruleguard/dsl v0.3.23
