@@ -187,7 +187,7 @@ require (
 	github.com/go-toolsmith/astp v1.1.0 // indirect
 	github.com/go-toolsmith/strparse v1.1.0 // indirect
 	github.com/go-toolsmith/typep v1.1.0 // indirect
-	github.com/gobwas/glob v0.2.3 // indirect
+	github.com/gobwas/glob v1.0.0 // indirect
 	github.com/golang/snappy v1.0.0 // indirect
 	github.com/golangci/golangci-lint/v2 v2.13.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
