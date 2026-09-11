@@ -114,7 +114,7 @@ github.com/alingse/asasalint
 ## explicit; go 1.22.0
 github.com/alingse/nilnesserr
 github.com/alingse/nilnesserr/internal/typeparams
-# github.com/andybalholm/brotli v1.2.3
+# github.com/andybalholm/brotli v1.2.4
 ## explicit; go 1.22
 github.com/andybalholm/brotli
 github.com/andybalholm/brotli/matchfinder
