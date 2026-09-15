@@ -219,7 +219,7 @@ require (
 	github.com/palantir/pkg/pkgpath v1.4.0 // indirect
 	github.com/palantir/witchcraft-go-error v1.50.0 // indirect
 	github.com/palantir/witchcraft-go-params v1.48.0 // indirect
-	github.com/pierrec/lz4/v4 v4.1.29 // indirect
+	github.com/pierrec/lz4/v4 v4.1.30 // indirect
 	github.com/prometheus/client_golang v1.24.1 // indirect
 	github.com/prometheus/client_model v0.6.3 // indirect
 	github.com/prometheus/common v0.71.0 // indirect
