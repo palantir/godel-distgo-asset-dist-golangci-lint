@@ -2,6 +2,8 @@ module github.com/palantir/godel-distgo-asset-dist-golangci-lint
 
 go 1.27.0
 
+toolchain go1.27.1
+
 require (
 	4d63.com/gocheckcompilerdirectives v1.4.0
 	4d63.com/gochecknoglobals v0.2.2
