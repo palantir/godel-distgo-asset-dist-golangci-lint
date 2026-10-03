@@ -95,7 +95,7 @@ require (
 	github.com/moricho/tparallel v0.3.2
 	github.com/nakabonne/nestif v0.3.1
 	github.com/nishanths/exhaustive v0.13.0
-	github.com/nishanths/predeclared v0.2.2
+	github.com/nishanths/predeclared v0.3.0
 	github.com/nmiyake/pkg/gofiles v1.2.0
 	github.com/nunnatsa/ginkgolinter v0.24.0
 	github.com/palantir/amalgomate v1.61.0
