@@ -16,6 +16,7 @@ package distgo
 
 import (
 	"fmt"
+	"slices"
 	"sort"
 	"strings"
 
@@ -111,13 +112,17 @@ func ToProductBuildIDs(in []string) []ProductBuildID {
 // and the productBuildID is "foo.darwin-amd64", the returned ProductParam will only contain "darwin-amd64" in the build
 // configuration. Returns an error if any of the productBuildID values cannot be resolved to a configuration in the
 // provided inputProducts.
+//
+// A nil productBuildIDs means none were specified, and returns the project's productBuildIDs unmodified. A non-nil
+// but empty productBuildIDs is a valid, distinct request for zero builds and returns an empty result.
 func ProductParamsForBuildProductArgs(inputProducts map[ProductID]ProductParam, osArchs []osarch.OSArch, productBuildIDs ...ProductBuildID) ([]ProductParam, error) {
 	// error if project does not contain any productBuildIDs
 	if len(inputProducts) == 0 {
 		return nil, errors.Errorf("project does not contain any products")
 	}
-	// if no productBuildIDs were specified, return project's productBuildIDs unmodified
-	if len(productBuildIDs) == 0 {
+	// if productBuildIDs is nil, none were specified, so return the project's productBuildIDs unmodified. A non-nil,
+	// empty slice means the caller explicitly requested zero builds, which is handled by the logic below.
+	if productBuildIDs == nil {
 		return filterProductParamsToOSArch(toSortedProductParams(inputProducts), osArchs), nil
 	}
 
@@ -161,13 +166,7 @@ func ProductParamsForBuildProductArgs(inputProducts map[ProductID]ProductParam, 
 
 	// all IDs are valid. For any ID that has an empty OS/Arch as a value, expand to all OS/Archs.
 	for productID, osArchs := range productIDToOSArchs {
-		allVals := false
-		for _, currOSArchs := range osArchs {
-			if currOSArchs == (osarch.OSArch{}) {
-				allVals = true
-				break
-			}
-		}
+		allVals := slices.Contains(osArchs, (osarch.OSArch{}))
 		if !allVals || inputProducts[productID].Build == nil {
 			continue
 		}
@@ -276,13 +275,17 @@ func ToProductDistIDs(in []string) []ProductDistID {
 // example, if the project defines a product "foo" with DistParams "os-arch-bin" and "manual" and the productDistID is
 // "foo.os-arch-bin", the returned ProductParam will only contain "os-arch-bin" in the dist configuration. Returns an
 // error if any of the productDistID values cannot be resolved to a configuration in the provided inputProducts.
+//
+// A nil productDistIDs means none were specified, and returns the project's productDistIDs unmodified. A non-nil but
+// empty productDistIDs is a valid, distinct request for zero dists and returns an empty result.
 func ProductParamsForDistProductArgs(inputProducts map[ProductID]ProductParam, productDistIDs ...ProductDistID) ([]ProductParam, error) {
 	// error if project does not contain any productDistIDs
 	if len(inputProducts) == 0 {
 		return nil, errors.Errorf("project does not contain any products")
 	}
-	// if no productDistIDs were specified, return project's productDistIDs unmodified
-	if len(productDistIDs) == 0 {
+	// if productDistIDs is nil, none were specified, so return the project's productDistIDs unmodified. A non-nil,
+	// empty slice means the caller explicitly requested zero dists, which is handled by the logic below.
+	if productDistIDs == nil {
 		return toSortedProductParams(inputProducts), nil
 	}
 
@@ -323,13 +326,7 @@ func ProductParamsForDistProductArgs(inputProducts map[ProductID]ProductParam, p
 
 	// all IDs are valid. For any ID that has "" as a value, expand to all dists.
 	for productID, distIDs := range productIDToDistIDs {
-		allVals := false
-		for _, currDistID := range distIDs {
-			if currDistID == "" {
-				allVals = true
-				break
-			}
-		}
+		allVals := slices.Contains(distIDs, "")
 		if !allVals || inputProducts[productID].Dist == nil {
 			continue
 		}
@@ -383,9 +380,9 @@ func (id ProductDockerID) Parse() (ProductID, DockerID, DockerTagID) {
 
 		rest := string(id[dotIdx+1:])
 		dockerID = DockerID(rest)
-		if secondDotIdx := strings.Index(rest, "."); secondDotIdx != -1 {
-			dockerID = DockerID(rest[:secondDotIdx])
-			tagID = DockerTagID(rest[secondDotIdx+1:])
+		if before, after, ok := strings.Cut(rest, "."); ok {
+			dockerID = DockerID(before)
+			tagID = DockerTagID(after)
 		}
 	}
 	return productID, dockerID, tagID
