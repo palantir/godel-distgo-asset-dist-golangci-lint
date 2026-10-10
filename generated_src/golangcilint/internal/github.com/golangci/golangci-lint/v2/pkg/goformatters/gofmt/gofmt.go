@@ -1,7 +1,7 @@
 package gofmt
 
 import (
-	"github.com/golangci/gofmt/gofmt"
+	"github.com/golangci/gofmt"
 
 	"github.com/palantir/godel-distgo-asset-dist-golangci-lint/generated_src/golangcilint/internal/github.com/golangci/golangci-lint/v2/pkg/config"
 )

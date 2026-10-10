@@ -2,6 +2,8 @@ module github.com/palantir/godel-distgo-asset-dist-golangci-lint
 
 go 1.27.0
 
+toolchain go1.27.2
+
 require (
 	4d63.com/gocheckcompilerdirectives v1.4.0
 	4d63.com/gochecknoglobals v0.2.2
@@ -23,7 +25,7 @@ require (
 	github.com/MirrexOne/unqueryvet v1.5.4
 	github.com/OpenPeeDeeP/depguard/v2 v2.2.1
 	github.com/alecthomas/chroma/v2 v2.27.0
-	github.com/alecthomas/go-check-sumtype v0.3.1
+	github.com/alecthomas/go-check-sumtype v0.5.1-0.20260828200218-ae6904d28606
 	github.com/alexkohler/nakedret/v2 v2.0.6
 	github.com/alexkohler/prealloc v1.1.0
 	github.com/alingse/asasalint v0.0.11
@@ -54,9 +56,10 @@ require (
 	github.com/godoc-lint/godoc-lint v0.11.4
 	github.com/gofrs/flock v0.13.1
 	github.com/golangci/asciicheck v0.5.0
+	github.com/golangci/canonicalheader v0.0.0-20260827115959-a25c71c521f6
 	github.com/golangci/dupl v0.0.0-20260401084720-c99c5cf5c202
 	github.com/golangci/go-printf-func-name v0.1.1
-	github.com/golangci/gofmt v0.0.0-20250704145412-3e58ba0443c6
+	github.com/golangci/gofmt v0.0.0-20260820135601-e84e05053792
 	github.com/golangci/golines v0.16.0
 	github.com/golangci/misspell v0.8.0
 	github.com/golangci/plugin-module-register v0.1.2
@@ -76,7 +79,6 @@ require (
 	github.com/kkHAIKE/contextcheck v1.1.6
 	github.com/kulti/thelper v0.7.1
 	github.com/kunwardeep/paralleltest v1.0.15
-	github.com/lasiar/canonicalheader v1.1.2
 	github.com/ldez/exptostd v0.4.5
 	github.com/ldez/gomoddirectives v0.10.0
 	github.com/ldez/grignotin v0.10.1
@@ -189,7 +191,7 @@ require (
 	github.com/go-toolsmith/typep v1.1.0 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/golang/snappy v1.0.0 // indirect
-	github.com/golangci/golangci-lint/v2 v2.13.0 // indirect
+	github.com/golangci/golangci-lint/v2 v2.14.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/go-containerregistry v0.22.1 // indirect
 	github.com/gostaticanalysis/analysisutil v0.7.1 // indirect
