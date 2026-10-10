@@ -28,6 +28,7 @@ import (
 	"github.com/palantir/godel-distgo-asset-dist-golangci-lint/runner"
 	"github.com/palantir/godel/v2/pkg/osarch"
 	"github.com/pkg/errors"
+	"golang.org/x/mod/modfile"
 	"gopkg.in/yaml.v3"
 )
 
@@ -158,17 +159,36 @@ func (d *Dister) RunDist(distID distgo.DistID, productTaskOutputInfo distgo.Prod
 }
 
 func projectGoToolchain(projectDir string) (string, error) {
-	cmd := exec.Command("go", "env", "GOVERSION")
-	cmd.Dir = projectDir
-
-	output, err := cmd.CombinedOutput()
+	goModPath := filepath.Join(projectDir, "go.mod")
+	goModBytes, err := os.ReadFile(goModPath)
 	if err != nil {
-		return "", errors.Wrapf(err, "command %q failed: %s", strings.Join(cmd.Args, " "), strings.TrimSpace(string(output)))
+		return "", errors.Wrapf(err, "failed to read %s", goModPath)
 	}
 
-	goToolchain := strings.TrimSpace(string(output))
+	goMod, err := modfile.Parse(goModPath, goModBytes, nil)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to parse %s", goModPath)
+	}
+
+	var goToolchain string
+	if goMod.Toolchain != nil {
+		goToolchain = goMod.Toolchain.Name
+	} else if goMod.Go != nil {
+		goToolchain = "go" + goMod.Go.Version
+		if strings.Count(goMod.Go.Version, ".") == 1 {
+			goToolchain += ".0"
+		}
+	} else {
+		cmd := exec.Command("go", "env", "GOVERSION")
+		cmd.Dir = projectDir
+		output, err := cmd.CombinedOutput()
+		if err != nil {
+			return "", errors.Wrapf(err, "command %q failed: %s", strings.Join(cmd.Args, " "), strings.TrimSpace(string(output)))
+		}
+		goToolchain = strings.TrimSpace(string(output))
+	}
 	if !strings.HasPrefix(goToolchain, "go1.") {
-		return "", errors.Errorf("command %q returned invalid Go toolchain version %q", strings.Join(cmd.Args, " "), goToolchain)
+		return "", errors.Errorf("%s does not specify a valid Go toolchain or Go version", goModPath)
 	}
 	return goToolchain, nil
 }

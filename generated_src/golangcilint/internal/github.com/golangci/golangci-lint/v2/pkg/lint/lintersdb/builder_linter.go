@@ -167,7 +167,7 @@ func (LinterBuilder) Build(cfg *config.Config) ([]*linter.Config, error) {
 			WithLoadForGoAnalysis().
 			WithURL("https://github.com/timakin/bodyclose"),
 
-		linter.NewConfig(canonicalheader.New()).
+		linter.NewConfig(canonicalheader.New(&cfg.Linters.Settings.CanonicalHeader)).
 			WithSince("v1.58.0").
 			WithLoadForGoAnalysis().
 			WithAutoFix().
@@ -608,7 +608,7 @@ func (LinterBuilder) Build(cfg *config.Config) ([]*linter.Config, error) {
 			WithSince("v1.37.0").
 			ConsiderSlow().
 			WithAutoFix().
-			WithURL("https://github.com/mgechev/revive"),
+			WithURL("https://github.com/revive-lint/revive"),
 
 		linter.NewConfig(rowserrcheck.New(&cfg.Linters.Settings.RowsErrCheck)).
 			WithSince("v1.23.0").
