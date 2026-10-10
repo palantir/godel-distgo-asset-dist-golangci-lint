@@ -20,6 +20,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"testing"
 
 	"github.com/nmiyake/pkg/gofiles"
@@ -29,6 +30,7 @@ import (
 	"github.com/palantir/pkg/specdir"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"golang.org/x/mod/modfile"
 )
 
 const (
@@ -199,7 +201,7 @@ products:
 					versionOutput, err := exec.Command("go", "version", "-m", binaryPath).CombinedOutput()
 					t.Logf("go version -m %s:\n%s", binaryPath, versionOutput)
 					require.NoError(t, err)
-					assert.Contains(t, string(versionOutput), ": "+targetGoToolchain+"\n")
+					assertBinaryUsesGoModToolchain(t, projectDir, string(versionOutput))
 
 					lintDir := t.TempDir()
 					require.NoError(t, os.WriteFile(filepath.Join(lintDir, "go.mod"), []byte("module example.com/integration\n\ngo "+supportedGoVersion+".0\n"), 0o644))
@@ -214,4 +216,27 @@ products:
 			},
 		},
 	)
+}
+
+func assertBinaryUsesGoModToolchain(t *testing.T, projectDir, versionOutput string) {
+	t.Helper()
+
+	goModPath := filepath.Join(projectDir, "go.mod")
+	goModBytes, err := os.ReadFile(goModPath)
+	require.NoError(t, err)
+
+	goMod, err := modfile.Parse(goModPath, goModBytes, nil)
+	require.NoError(t, err)
+
+	var wantVersion string
+	if goMod.Toolchain != nil {
+		wantVersion = goMod.Toolchain.Name
+	} else {
+		require.NotNil(t, goMod.Go, "go.mod must contain a go directive when it does not contain a toolchain directive")
+		wantVersion = "go" + goMod.Go.Version
+		if strings.Count(goMod.Go.Version, ".") == 1 {
+			wantVersion += ".0"
+		}
+	}
+	assert.Contains(t, versionOutput, ": "+wantVersion+"\n")
 }
