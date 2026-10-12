@@ -151,7 +151,7 @@ require (
 	golang.org/x/tools v0.52.0
 	gopkg.in/yaml.v2 v2.4.0
 	gopkg.in/yaml.v3 v3.0.1
-	honnef.co/go/tools v0.8.1
+	honnef.co/go/tools v0.8.2
 	mvdan.cc/gofumpt v0.12.0
 	mvdan.cc/unparam v0.0.0-20261011093844-7a2c2c0b7aa6
 )
