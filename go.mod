@@ -100,7 +100,7 @@ require (
 	github.com/nunnatsa/ginkgolinter v0.24.0
 	github.com/palantir/amalgomate v1.61.0
 	github.com/palantir/distgo v1.91.0
-	github.com/palantir/godel/v2 v2.186.0
+	github.com/palantir/godel/v2 v2.188.0
 	github.com/palantir/pkg/cobracli v1.4.0
 	github.com/palantir/pkg/specdir v1.4.0
 	github.com/pelletier/go-toml/v2 v2.4.3
@@ -198,7 +198,7 @@ require (
 	github.com/hashicorp/golang-lru/v2 v2.0.7 // indirect
 	github.com/hexops/gotextdiff v1.0.3 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
-	github.com/klauspost/compress v1.20.1 // indirect
+	github.com/klauspost/compress v1.20.3 // indirect
 	github.com/klauspost/pgzip v1.2.7 // indirect
 	github.com/ldez/structtags v0.6.1 // indirect
 	github.com/lucasb-eyer/go-colorful v1.4.1 // indirect
