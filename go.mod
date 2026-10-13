@@ -218,7 +218,7 @@ require (
 	github.com/palantir/pkg/matcher v1.3.0 // indirect
 	github.com/palantir/pkg/pkgpath v1.4.0 // indirect
 	github.com/palantir/witchcraft-go-error v1.50.0 // indirect
-	github.com/palantir/witchcraft-go-params v1.48.0 // indirect
+	github.com/palantir/witchcraft-go-params v1.49.0 // indirect
 	github.com/pierrec/lz4/v4 v4.1.33 // indirect
 	github.com/prometheus/client_golang v1.25.0 // indirect
 	github.com/prometheus/client_model v0.6.3 // indirect
