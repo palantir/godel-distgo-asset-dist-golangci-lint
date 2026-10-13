@@ -165,6 +165,7 @@ require (
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/ccojocar/zxcvbn-go v1.0.4 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
+	github.com/chainguard-dev/git-urls v1.0.2 // indirect
 	github.com/charmbracelet/colorprofile v0.4.3 // indirect
 	github.com/charmbracelet/ultraviolet v0.0.0-20261008173134-6b8d4baf91b4 // indirect
 	github.com/charmbracelet/x/ansi v0.11.9 // indirect
@@ -212,7 +213,7 @@ require (
 	github.com/nwaples/rardecode v1.1.3 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.1.1 // indirect
-	github.com/palantir/distgo/pkg/git v1.0.0 // indirect
+	github.com/palantir/distgo/pkg/git v1.1.0 // indirect
 	github.com/palantir/pkg v1.2.0 // indirect
 	github.com/palantir/pkg/gittest v1.3.0 // indirect
 	github.com/palantir/pkg/matcher v1.3.0 // indirect
