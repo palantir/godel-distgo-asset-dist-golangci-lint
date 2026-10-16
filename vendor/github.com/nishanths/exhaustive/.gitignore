@@ -1,12 +1,10 @@
 .DS_Store
-*.swp
-tags
+/cover*.out
+/coverprofiles
+/tools
 
 # binary
-/cmd/exhaustive/exhaustive
 /exhaustive
-
-# testing artifacts
-/coverage.out
-
-/CHANGELOG.md
+# binary in script tests
+/cmd/exhaustive/exhaustive-scripttest
+/cmd/exhaustive/exhaustive-scripttest-*
