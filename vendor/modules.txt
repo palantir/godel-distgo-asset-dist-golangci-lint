@@ -654,8 +654,8 @@ github.com/kulti/thelper/pkg/analyzer
 # github.com/kunwardeep/paralleltest v1.0.16
 ## explicit; go 1.23.0
 github.com/kunwardeep/paralleltest/pkg/paralleltest
-# github.com/lasiar/canonicalheader v1.1.2
-## explicit; go 1.22.0
+# github.com/lasiar/canonicalheader v1.1.3
+## explicit; go 1.26.0
 github.com/lasiar/canonicalheader
 # github.com/ldez/exptostd v0.4.5
 ## explicit; go 1.24.0
