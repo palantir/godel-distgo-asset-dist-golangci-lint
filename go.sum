@@ -376,8 +376,8 @@ github.com/otiai10/mint v1.3.0/go.mod h1:F5AjcsTsWUqX+Na9fpHb52P8pcRX2CI6A3ctIT9
 github.com/otiai10/mint v1.3.1/go.mod h1:/yxELlJQ0ufhjUwhshSj+wFjZ78CnZ48/1wtmBH1OTc=
 github.com/otiai10/mint v1.6.3 h1:87qsV/aw1F5as1eH1zS/yqHY85ANKVMgkDrf9rcxbQs=
 github.com/otiai10/mint v1.6.3/go.mod h1:MJm72SBthJjz8qhefc4z1PYEieWmy8Bku7CjcAqyUSM=
-github.com/palantir/amalgomate v1.61.0 h1:fiYU+oHVcmtTxe2i376guJGeKppAWPK7t9R6y93w9qg=
-github.com/palantir/amalgomate v1.61.0/go.mod h1:nPWNEfaRa5uHGpN7VsUtJ6EAPcUIVilYDSKGJvkxLTU=
+github.com/palantir/amalgomate v1.62.0 h1:sL5edbimtV8G0on9hbHZrmKskN0Mi7CGE28lun+F1j0=
+github.com/palantir/amalgomate v1.62.0/go.mod h1:oUcPgLSQfA5wZ+ZkcYiO3KCNXCJkjN0qhk6Eh7LUbhU=
 github.com/palantir/distgo v1.91.0 h1:VUc+0HAUI/4jIn8geNjyA+zBUPAxIrqmN2Zpui+hl4g=
 github.com/palantir/distgo v1.91.0/go.mod h1:CJsDGGfDdvNF4mmPCnh8xfs/UB38kBogrG8KAyos+xI=
 github.com/palantir/distgo/pkg/git v1.1.0 h1:8ThEUZxMeUbRHdXuKco4ytBh74V7rtE+yfwDjvug9KA=
