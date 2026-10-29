@@ -100,7 +100,7 @@ require (
 	github.com/nunnatsa/ginkgolinter v0.24.0
 	github.com/palantir/amalgomate v1.62.0
 	github.com/palantir/distgo v1.91.0
-	github.com/palantir/godel/v2 v2.203.0
+	github.com/palantir/godel/v2 v2.204.0
 	github.com/palantir/pkg/cobracli v1.4.0
 	github.com/palantir/pkg/specdir v1.4.0
 	github.com/pelletier/go-toml/v2 v2.4.3
@@ -217,6 +217,7 @@ require (
 	github.com/palantir/distgo/pkg/git v1.1.0 // indirect
 	github.com/palantir/pkg v1.2.0 // indirect
 	github.com/palantir/pkg/gittest v1.3.0 // indirect
+	github.com/palantir/pkg/gotoolchain v0.1.0 // indirect
 	github.com/palantir/pkg/matcher v1.3.0 // indirect
 	github.com/palantir/pkg/pkgpath v1.4.0 // indirect
 	github.com/palantir/witchcraft-go-error v1.51.0 // indirect
