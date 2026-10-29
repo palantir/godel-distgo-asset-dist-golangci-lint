@@ -21,7 +21,7 @@ require (
 	github.com/Djarvur/go-err113 v0.1.1
 	github.com/Masterminds/semver/v3 v3.5.0
 	github.com/MirrexOne/unqueryvet v1.5.4
-	github.com/OpenPeeDeeP/depguard/v2 v2.2.1
+	github.com/OpenPeeDeeP/depguard/v2 v2.3.0
 	github.com/alecthomas/chroma/v2 v2.27.0
 	github.com/alecthomas/go-check-sumtype v0.3.1
 	github.com/alexkohler/nakedret/v2 v2.0.6
@@ -188,7 +188,7 @@ require (
 	github.com/go-toolsmith/astp v1.1.0 // indirect
 	github.com/go-toolsmith/strparse v1.1.0 // indirect
 	github.com/go-toolsmith/typep v1.1.0 // indirect
-	github.com/gobwas/glob v0.2.3 // indirect
+	github.com/gobwas/glob v1.0.0 // indirect
 	github.com/golang/snappy v1.0.0 // indirect
 	github.com/golangci/golangci-lint/v2 v2.13.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
