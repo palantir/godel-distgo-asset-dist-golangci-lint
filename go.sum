@@ -48,6 +48,8 @@ github.com/alecthomas/chroma/v2 v2.27.0 h1:FodwmyOBgJULFYmDqibcp9pvfDLWdtPRh9v/r
 github.com/alecthomas/chroma/v2 v2.27.0/go.mod h1:NjJ3ciIgrqBNeIkWZ4e46nseoLDslxU1LmfCoL+wcY8=
 github.com/alecthomas/go-check-sumtype v0.3.1 h1:u9aUvbGINJxLVXiFvHUlPEaD7VDULsrxJb4Aq31NLkU=
 github.com/alecthomas/go-check-sumtype v0.3.1/go.mod h1:A8TSiN3UPRw3laIgWEUOHHLPa6/r9MtoigdlP5h3K/E=
+github.com/alecthomas/go-check-sumtype v0.5.1-0.20260828200218-ae6904d28606 h1:dXPJ+uOJLWb8rjlAuLX7JPiRJtZKw/53Ol+WxdDJ1Eo=
+github.com/alecthomas/go-check-sumtype v0.5.1-0.20260828200218-ae6904d28606/go.mod h1:ZH31IJyNpxpStxP2ayCcPQz+3T2G/OnxIQqe4LWvSDw=
 github.com/alecthomas/repr v0.5.2 h1:SU73FTI9D1P5UNtvseffFSGmdNci/O6RsqzeXJtP0Qs=
 github.com/alecthomas/repr v0.5.2/go.mod h1:Fr0507jx4eOXV7AlPV6AVZLYrLIuIeSOWtW57eE/O/4=
 github.com/alexkohler/nakedret/v2 v2.0.6 h1:ME3Qef1/KIKr3kWX3nti3hhgNxw6aqN5pZmQiFSsuzQ=
@@ -203,8 +205,12 @@ github.com/golangci/go-printf-func-name v0.1.1 h1:hIYTFJqAGp1iwoIfsNTpoq1xZAarog
 github.com/golangci/go-printf-func-name v0.1.1/go.mod h1:Es64MpWEZbh0UBtTAICOZiB+miW53w/K9Or/4QogJss=
 github.com/golangci/gofmt v0.0.0-20250704145412-3e58ba0443c6 h1:jlKy3uQkETB3zMBK8utduvojT+If2nDAM1pWpEzXjaY=
 github.com/golangci/gofmt v0.0.0-20250704145412-3e58ba0443c6/go.mod h1:OyaRySOXorMn8zJqFku8YsKptIhPkANyKKTMC+rqMCs=
+github.com/golangci/gofmt v0.0.0-20260820135601-e84e05053792 h1:WL8YKrt3UbOBqSRU7GpP5BTtQTMWtVtj+mfPijgZeIg=
+github.com/golangci/gofmt v0.0.0-20260820135601-e84e05053792/go.mod h1:te5hX0dW4C5r6YbXs+6ysNr8Q5UTmdIqGbb+mlFiYmA=
 github.com/golangci/golangci-lint/v2 v2.13.0 h1:n/YR8sCuTAfjwKLHOU0q63X2e4tObi1PCNOz+HXJ3cE=
 github.com/golangci/golangci-lint/v2 v2.13.0/go.mod h1:87ufh8Q+WaRfXQPydwBev3F9R7A1MiaomOURITlkY0Q=
+github.com/golangci/golangci-lint/v2 v2.15.0 h1:w94zf8HAYI7hm3164kwKsvZRuqXvY+YxeFoTbu1OLg8=
+github.com/golangci/golangci-lint/v2 v2.15.0/go.mod h1:/FRI304IxqDVhX2o3ZZ0qp8Vvz8egJdzCY5A4GjvmTU=
 github.com/golangci/golines v0.16.0 h1:xKdwzRvwzLd7V131B/dv90vUiEoTA0vQybdeqperPOg=
 github.com/golangci/golines v0.16.0/go.mod h1:mCMgRQHiCvuALJOeaNtylu09zbzvS9Ka01dfvLLJios=
 github.com/golangci/misspell v0.8.0 h1:qvxQhiE2/5z+BVRo1kwYA8yGz+lOlu5Jfvtx2b04Jbg=
@@ -344,8 +350,12 @@ github.com/nakabonne/nestif v0.3.1 h1:wm28nZjhQY5HyYPx+weN3Q65k6ilSBxDb8v5S81B81
 github.com/nakabonne/nestif v0.3.1/go.mod h1:9EtoZochLn5iUprVDmDjqGKPofoUEBL8U4Ngq6aY7OE=
 github.com/nishanths/exhaustive v0.13.0 h1:Rof0axOSNQaaPaPmLK5RxcRrJV2Vcv+vfUmuRy+2EAM=
 github.com/nishanths/exhaustive v0.13.0/go.mod h1:3/adQjJgvD/UFHHSYBjpK9Wbz8DOvf0FBtzx+zI0Rlo=
+github.com/nishanths/exhaustive v0.15.0 h1:uFjiO/WvrwQG+ojSZ+vtl/jAFbqA2oAtfpUWK/iKQ8M=
+github.com/nishanths/exhaustive v0.15.0/go.mod h1:2by9rYmg9FnsnLQC4Ixig4fQaWxRsY7RluxJuAu9sa0=
 github.com/nishanths/predeclared v0.2.2 h1:V2EPdZPliZymNAn79T8RkNApBjMmVKh5XRpLm/w98Vk=
 github.com/nishanths/predeclared v0.2.2/go.mod h1:RROzoN6TnGQupbC+lqggsOlcgysk3LMK/HI84Mp280c=
+github.com/nishanths/predeclared v0.3.0 h1:W3i3JK/DZS5h7QwsEIyU8ler4Z2vwEwQSxNrZzhnlfk=
+github.com/nishanths/predeclared v0.3.0/go.mod h1:gN4uryPExDME/zmZdqkKIPSAqcfprj316ZDI6UTqz70=
 github.com/nmiyake/pkg v1.0.0/go.mod h1:078BHtQj5Tk8Im6EpMHR0/Stp79lwL3FIRiGaC9hTDM=
 github.com/nmiyake/pkg/dirs v1.0.2/go.mod h1:fVEsJ8Y8gFb14mbXq4iFQgzR19mMLEKA/lX3Y7Ccl3w=
 github.com/nmiyake/pkg/dirs v1.1.0 h1:qyTzK3bTqAJfekQcU6vlydM/YRxhHsv6MiRFEwTkJcw=
