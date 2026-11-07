@@ -1,104 +1,120 @@
-# exhaustive
+The exhaustive static analysis checks that
+switch statements in Go source code are exhaustive. The analysis
+can check expression switches, if the switch expression
+type is an enumerated type, and type switches.
 
-[![Godoc][godoc-svg]][godoc]
+The complete analysis is implemented in multiple passes; see the
+packages under the 'passes' directory of the module.
+Package enumerated finds declarations of enumerated types and
+enumerated constants.
+Package exhaustive scans the syntax tree of Go packages for switch
+statements and checks that the switch statements are exhaustive.
 
-`exhaustive` checks exhaustiveness of enum switch statements in Go source code.
+# Documentation
 
-For the definition of enum and the definition of exhaustiveness used by this
-program, see [godoc][godoc-doc]. For the changelog, see [CHANGELOG][changelog]
-in the GitHub wiki. The program can be configured to additionally check
-exhaustiveness of keys in map literals whose key type is an enum.
+The analysis is documented in Go package comments. See the Go
+files named doc.go under the 'passes' directory. The documentation
+can be read using the 'go doc' command. For example:
 
-## Usage
+	go doc github.com/nishanths/exhaustive/passes/exhaustive
 
-Command:
+The documentation is also available on pkg.go.dev.
+
+<https://pkg.go.dev/github.com/nishanths/exhaustive/passes/enumerated>
+
+<https://pkg.go.dev/github.com/nishanths/exhaustive/passes/exhaustive>
+
+# Usage
+
+The exhaustive command runs the static analysis on the specified
+packages of Go source code. The command can be installed using
+'go install'.
+
+	go install github.com/nishanths/exhaustive/cmd/exhaustive@latest
+
+The synopsis of the command is:
 
 ```
-go install github.com/nishanths/exhaustive/cmd/exhaustive@latest
-
-exhaustive [flags] [packages]
+exhaustive [-B] [-casenil] [-d] [-defrequire] [-e] [-g] [-i] [-p]
+           [-check string] [-constignore regexp] [-typeignore regexp]
+           [-typeonly regexp] [packages]
+exhaustive -h | -help
 ```
 
-For available flags, refer to the [Flags][godoc-flags] section in godoc or run
-`exhaustive -h`.
+The packages in the module can also be imported and used from external analysis
+driver programs. See <https://golang.org/x/tools/go/analysis> for details. The
+analysis driver program may want to make available to users the flag sets
+defined by both the enumerated analyzer and the exhaustive analyzer.
 
-Package:
+# Examples
+
+Given the expression switch
 
 ```
-go get github.com/nishanths/exhaustive
+package a
 
-import "github.com/nishanths/exhaustive"
-```
-
-The `exhaustive.Analyzer` variable follows guidelines in the
-[`golang.org/x/tools/go/analysis`][xanalysis] package. This should make it
-possible to integrate `exhaustive` with your own analysis driver program.
-
-## Example
-
-Given an enum:
-
-```go
-package token // import "example.org/token"
-
-type Token int
+type vcs int
 
 const (
-	Add Token = iota
-	Subtract
-	Multiply
-	Quotient
-	Remainder
+	bazaar vcs = iota
+	fossil
+	git
+	mercurial
+	subversion
+	darcs
 )
-```
 
-and code that switches on the enum:
-
-```go
-package calc
-
-import "example.org/token"
-
-func x(t token.Token) {
-	switch t {
-	case token.Add:
-	case token.Subtract:
-	case token.Remainder:
-	default:
+func f(v vcs) {
+	switch v {
+	case bazaar:
+	case fossil:
+	case git:
+	case mercurial:
+	case subversion:
 	}
 }
 ```
 
-running `exhaustive` with default flags will produce:
+the analysis reports the following diagnostic
+
+	$ exhaustive
+	a.go:15:2: missing cases in expression switch: darcs
+	$
+
+Though it is not so in the above example, in general the
+enumerated type declarations and the switch statement can be in
+different packages.
+
+Given the type switch
 
 ```
-calc.go:6:2: missing cases in switch of type token.Token: token.Multiply, token.Quotient
-```
+package b
 
-Specify flag `-check=switch,map` to additionally check exhaustiveness of keys
-in map literals. For example:
+import "go/types"
 
-```go
-var m = map[token.Token]rune{
-	token.Add:      '+',
-	token.Subtract: '-',
-	token.Multiply: '*',
-	token.Quotient: '/',
+func f(t types.Type) bool {
+	switch t.(type) {
+	case *types.Array,
+		*types.Chan,
+		*types.Interface,
+		*types.Map,
+		*types.Pointer,
+		*types.Signature,
+		*types.Slice,
+		*types.Struct,
+		*types.Tuple,
+		*types.Union:
+		return false
+	case *types.Alias, *types.Named:
+		return true
+	default:
+		panic("internal error: unhandled type")
+	}
 }
 ```
 
-```
-calc.go:14:9: missing keys in map of key type token.Token: token.Remainder
-```
+the diagnostic (as of go1.27) is
 
-## Contributing
-
-Issues and changes are welcome. Please discuss substantial changes in an issue
-first.
-
-[godoc]: https://pkg.go.dev/github.com/nishanths/exhaustive
-[godoc-svg]: https://pkg.go.dev/badge/github.com/nishanths/exhaustive.svg
-[godoc-doc]: https://pkg.go.dev/github.com/nishanths/exhaustive#section-documentation
-[godoc-flags]: https://pkg.go.dev/github.com/nishanths/exhaustive#hdr-Flags
-[xanalysis]: https://pkg.go.dev/golang.org/x/tools/go/analysis
-[changelog]: https://github.com/nishanths/exhaustive/wiki/CHANGELOG
+	$ exhaustive -check=typeswitch
+	b.go:6:2: missing cases in type switch: *types.Basic, *types.TypeParam
+	$
