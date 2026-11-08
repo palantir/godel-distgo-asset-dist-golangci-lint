@@ -127,7 +127,7 @@ require (
 	github.com/stbenjam/no-sprintf-host-port v0.3.1
 	github.com/stretchr/testify v1.12.1
 	github.com/tetafro/godot v1.5.6
-	github.com/timakin/bodyclose v0.0.0-20260923065923-98ded9ab4ef2
+	github.com/timakin/bodyclose v0.0.0-20261107224203-8bb60b19bea4
 	github.com/timonwong/loggercheck v0.13.1
 	github.com/tomarrell/wrapcheck/v2 v2.13.0
 	github.com/tommy-muehle/go-mnd/v2 v2.5.1
