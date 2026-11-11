@@ -215,7 +215,7 @@ require (
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.1.1 // indirect
 	github.com/palantir/distgo/pkg/git v1.1.0 // indirect
-	github.com/palantir/pkg v1.2.0 // indirect
+	github.com/palantir/pkg v1.3.0 // indirect
 	github.com/palantir/pkg/gittest v1.3.0 // indirect
 	github.com/palantir/pkg/gotoolchain v0.1.0 // indirect
 	github.com/palantir/pkg/matcher v1.3.0 // indirect
