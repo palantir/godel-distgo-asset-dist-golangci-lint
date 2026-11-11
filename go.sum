@@ -400,8 +400,8 @@ github.com/palantir/pkg/specdir v1.4.0 h1:rhDOb2OehhLEYw7dR+gBKlT9iS2f8jlVXHa/6v
 github.com/palantir/pkg/specdir v1.4.0/go.mod h1:lccMX+mjwigJiM0XKwBeKc4gZcaSsbnx1acM4xayhCw=
 github.com/palantir/witchcraft-go-error v1.51.0 h1:wmlzMm/7rj0SGHhuSe5NAsKSi7ICmFFUSFKOrJSlG+U=
 github.com/palantir/witchcraft-go-error v1.51.0/go.mod h1:tqPzDsIBZnH1wJ9hjbeYJtIDEFZS5v8sKNUmRRNeBy0=
-github.com/palantir/witchcraft-go-params v1.50.0 h1:XyItIFee99iBN6hBcWYIDBRigy6+sLInpx5BYxPNl7U=
-github.com/palantir/witchcraft-go-params v1.50.0/go.mod h1:8I6OxXNOKFP0C3tOw03DPtPA++LT4jM/tMYj/TkgLFE=
+github.com/palantir/witchcraft-go-params v1.51.0 h1:YtpoTK3WIcmSvsg+5RH1JqjF6xVzMHVgpAvIFVfpGgM=
+github.com/palantir/witchcraft-go-params v1.51.0/go.mod h1:12K0HWtdMRULr0FHr/lvV2JvEodvPo1rpurliig9W20=
 github.com/pandatix/go-abnf v0.5.5 h1:EXex5KkRQx4Dm6GnpAcQnIMBs9KiK0uf8p/wq+4t9PM=
 github.com/pandatix/go-abnf v0.5.5/go.mod h1:AE0KD3/VNoCjGzc1gqetRKshbI4SYErXQ/8kPenR5mc=
 github.com/pelletier/go-toml/v2 v2.4.3 h1:GTRvJQutkOSftxIFD5xw9aepkYNuPWmVJpffdDPYVpY=
