@@ -99,7 +99,7 @@ require (
 	github.com/nmiyake/pkg/gofiles v1.2.0
 	github.com/nunnatsa/ginkgolinter v0.24.0
 	github.com/palantir/amalgomate v1.63.0
-	github.com/palantir/distgo v1.91.0
+	github.com/palantir/distgo v1.119.0
 	github.com/palantir/godel/v2 v2.205.0
 	github.com/palantir/pkg/cobracli v1.4.0
 	github.com/palantir/pkg/specdir v1.4.0
@@ -148,7 +148,7 @@ require (
 	golang.org/x/mod v0.43.0
 	golang.org/x/sync v0.25.0
 	golang.org/x/sys v0.50.0
-	golang.org/x/tools v0.52.0
+	golang.org/x/tools v0.52.1-0.20261106145633-d407941a339a
 	gopkg.in/yaml.v2 v2.4.0
 	gopkg.in/yaml.v3 v3.0.1
 	honnef.co/go/tools v0.8.2
