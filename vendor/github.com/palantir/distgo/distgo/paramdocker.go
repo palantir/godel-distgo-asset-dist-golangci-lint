@@ -41,11 +41,25 @@ type DockerParam struct {
 	// Repository is the Docker repository. This value is made available to TagTemplates as {{Repository}}.
 	Repository string
 
+	// OutputDir specifies the default output directory for any on-disk artifacts created by the "docker build" task --
+	// for example, OCI image layouts, metadata, etc. Different from the ContextDir in that the ContextDir is used as
+	// the location in which inputs are placed and where images are built, whereas the OutputDir dictates where any
+	// output may be written. Not all Docker build tasks have output, so the output directory may not be created or may
+	// be empty even on successful executions. The artifacts for a Docker configuration are written to
+	// "{{OutputDir}}/{{ProductID}}/{{Version}}/{{DockerID}}".
+	//
+	// Configuration defaults this to "out/docker". An empty value (possible for a Param built in memory) means the
+	// product has no Docker output directory: a DockerBuilder that writes on-disk output falls back to the legacy
+	// dist-based location "{{DistOutputDir}}/{{ProductID}}/{{Version}}/oci-{{DockerID}}", and has nowhere to write if
+	// the product configures no dists either.
+	OutputDir string
+
 	// DockerBuilderParams contains the Docker params for this distribution.
 	DockerBuilderParams map[DockerID]DockerBuilderParam
 }
 
 type DockerOutputInfos struct {
+	DockerOutputDir          string                               `json:"dockerOutputDir"`
 	DockerIDs                []DockerID                           `json:"dockerIds"`
 	Repository               string                               `json:"repository"`
 	DockerBuilderOutputInfos map[DockerID]DockerBuilderOutputInfo `json:"dockerBuilderOutputInfos"`
@@ -60,6 +74,11 @@ func (a ByOSArchID) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a ByOSArchID) Less(i, j int) bool { return a[i] < a[j] }
 
 type DockerBuilderOutputInfo struct {
+	// OutputDir is where on-disk output for this Docker configuration is written, relative to ProjectDir. The distgo
+	// running the task resolves it so that a DockerBuilder built from a different version of distgo does not have to
+	// derive it. Empty if the output info came from a distgo that predates the field or if the product has no Docker
+	// output directory.
+	OutputDir             string                              `json:"outputDir"`
 	ContextDir            string                              `json:"contextDir"`
 	DockerfilePath        string                              `json:"dockerfilePath"`
 	InputProductsDir      string                              `json:"inputProductsDir"`
@@ -122,6 +141,7 @@ func (p *DockerParam) ToDockerOutputInfos(productName, version string) (DockerOu
 	}
 	sort.Sort(ByDockerID(dockerIDs))
 	return DockerOutputInfos{
+		DockerOutputDir:          p.OutputDir,
 		DockerIDs:                dockerIDs,
 		Repository:               p.Repository,
 		DockerBuilderOutputInfos: dockerOutputInfos,
@@ -157,6 +177,11 @@ type DockerBuilderParam struct {
 	// this case, disabling rendering removes the need for the extra level of indirection usually necessary to render Go
 	// templates using Go templates.
 	DisableTemplateRendering bool
+
+	// SkipPush, when true, excludes this Docker image from the "docker push" task (it is never published, even by a
+	// no-argument "docker push" that otherwise pushes every image). The image is still built -- including as a
+	// dependency of another product -- so it can serve as a local base image without being published under its own tag.
+	SkipPush bool
 
 	// ContextDir is the Docker context directory for building the Docker image.
 	ContextDir string
