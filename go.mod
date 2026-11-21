@@ -223,7 +223,7 @@ require (
 	github.com/palantir/witchcraft-go-error v1.52.0 // indirect
 	github.com/palantir/witchcraft-go-params v1.51.0 // indirect
 	github.com/pandatix/go-abnf v0.5.5 // indirect
-	github.com/pierrec/lz4/v4 v4.1.33 // indirect
+	github.com/pierrec/lz4/v4 v4.1.34 // indirect
 	github.com/prometheus/client_golang v1.25.0 // indirect
 	github.com/prometheus/client_model v0.6.3 // indirect
 	github.com/prometheus/common v0.74.0 // indirect
