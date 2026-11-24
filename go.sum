@@ -382,8 +382,8 @@ github.com/palantir/distgo v1.91.0 h1:VUc+0HAUI/4jIn8geNjyA+zBUPAxIrqmN2Zpui+hl4
 github.com/palantir/distgo v1.91.0/go.mod h1:CJsDGGfDdvNF4mmPCnh8xfs/UB38kBogrG8KAyos+xI=
 github.com/palantir/distgo/pkg/git v1.1.0 h1:8ThEUZxMeUbRHdXuKco4ytBh74V7rtE+yfwDjvug9KA=
 github.com/palantir/distgo/pkg/git v1.1.0/go.mod h1:QhKxNr5yr4nlhdpzkXcnNecYOY782BXzS1pRxDucKYA=
-github.com/palantir/godel/v2 v2.206.0 h1:F1jVv9pckuNXHlg0l4FmdqOKvfdwgoRJerXB5Lhiq2c=
-github.com/palantir/godel/v2 v2.206.0/go.mod h1:jUady7fUkN4A6c++7Xhr1m/7BO1nHtupyyRee+6S9p0=
+github.com/palantir/godel/v2 v2.207.0 h1:m+4ShTJ16so08C3Li0jrq4SMpFZ/B91naZ+qzb9X8bI=
+github.com/palantir/godel/v2 v2.207.0/go.mod h1:wVuHEzNfraaNqwVZX3CtmJpddYTCHr417sNVtCo0vjo=
 github.com/palantir/pkg v1.3.0 h1:v3n/nDkdNQjwASw9CoC5ur1ghpHT44mOmQ+bavVR3pk=
 github.com/palantir/pkg v1.3.0/go.mod h1:qB+RCNzPSp4oF6fjtZNdN6ygAjwKCCblfWgg8N/9abA=
 github.com/palantir/pkg/cobracli v1.4.0 h1:pMSAaz3rzfkVuaGgOmrgqMkDefizoHdcXtzUroFf5u8=
@@ -407,8 +407,8 @@ github.com/pandatix/go-abnf v0.5.5/go.mod h1:AE0KD3/VNoCjGzc1gqetRKshbI4SYErXQ/8
 github.com/pelletier/go-toml/v2 v2.4.3 h1:GTRvJQutkOSftxIFD5xw9aepkYNuPWmVJpffdDPYVpY=
 github.com/pelletier/go-toml/v2 v2.4.3/go.mod h1:2gIqNv+qfxSVS7cM2xJQKtLSTLUE9V8t9Stt+h56mCY=
 github.com/pierrec/lz4/v4 v4.1.2/go.mod h1:gZWDp/Ze/IJXGXf23ltt2EXimqmTUXEy0GFuRQyBid4=
-github.com/pierrec/lz4/v4 v4.1.33 h1:GjG1TJ1V4IzKP8L96muuuDNpTwd7D+l2ccXrjAbe014=
-github.com/pierrec/lz4/v4 v4.1.33/go.mod h1:7SE9MC2STkNtL4PIwGhjmyVwvILaGI9/COYQNBhKM/c=
+github.com/pierrec/lz4/v4 v4.1.34 h1:5cPY8+z/ffHDpF6Pvv5FffjtZOJJQEiG75267Ol3QtU=
+github.com/pierrec/lz4/v4 v4.1.34/go.mod h1:R7aiqKav9M7+k1JW19D7y7rcavDvw9Te/YTdFJyNXBs=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
